@@ -1,5 +1,5 @@
 
-package br.senai.sc.model.dao.util;
+package br.senai.sc.model.util;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

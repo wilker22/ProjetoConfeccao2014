@@ -1,6 +1,6 @@
 package br.senai.sc.model.persistencia;
 
-import br.senai.sc.model.dao.util.JPAUtil;
+import br.senai.sc.model.util.JPAUtil;
 import br.senai.sc.model.persistencia.dao.DAO;
 import java.util.List;
 import javax.persistence.EntityManager;
