@@ -160,7 +160,7 @@ public class ListarTreinamentoGUI extends javax.swing.JFrame {
             int idTreinamento = (int) tabela.getValueAt(linhaSelecionada, 0);
             
             TreinamentoController tc = new TreinamentoController();
-             tc.delete(idTreinamento);
+             tc.excluir(idTreinamento);
              
              modelo.removeRow(linhaSelecionada);
              
@@ -209,7 +209,7 @@ public class ListarTreinamentoGUI extends javax.swing.JFrame {
         TreinamentoController tc = new TreinamentoController();       
         modelo.setNumRows(0);
         
-        for (Treinamento treina: tc.pesquisar(txPesquisaTreinamento.getText())){
+        for (Treinamento treina: tc.pesquisarNome(txPesquisaTreinamento.getText())){
             modelo.addRow(new Object[] {treina.getId(), treina.getNome(), treina.getCargaHoraria(), treina.getConteudo()});
         }
     }//GEN-LAST:event_txPesquisaTreinamentoActionPerformed
@@ -242,7 +242,7 @@ public class ListarTreinamentoGUI extends javax.swing.JFrame {
     private void preencherJTable() {
 
         TreinamentoController pc = new TreinamentoController();
-        for (Treinamento treina : pc.ListAll()) {
+        for (Treinamento treina : pc.listarTreinamento()) {
             modelo.addRow(new Object[]{treina.getId(), treina.getNome(), treina.getCargaHoraria(), treina.getConteudo()});
        
             

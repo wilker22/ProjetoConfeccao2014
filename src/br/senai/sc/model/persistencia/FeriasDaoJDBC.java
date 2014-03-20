@@ -19,8 +19,8 @@ import javax.swing.JOptionPane;
  *
  * @author larissa_mezari
  */
-public class FeriasDaoJDBC implements FeriasDAO {
-
+public class FeriasDaoJDBC /*implements FeriasDAO*/ {
+/*
     private final String INSERT = "insert into ferias(cod_funcionario, dt_inicio, dt_fim) values (?, ?, ?)";
     private final String UPDATE = "update ferias set cod_funcionario = ?, "
             + "dt_inicio = ?, dt_fim  where id = ?";
@@ -31,7 +31,7 @@ public class FeriasDaoJDBC implements FeriasDAO {
     /*
      * Método que realiza a inserção de uma pessoa na base de dados
      */
-
+/*
     public boolean insert(Ferias f) {
         Connection conn;
         try {
@@ -55,7 +55,7 @@ public class FeriasDaoJDBC implements FeriasDAO {
 
     /*
      * Método responsável por atualizar uma pessoa na base de dados
-     */
+     *//*
     public boolean update(Ferias f) {
         Connection conn;
         try {
@@ -79,7 +79,7 @@ public class FeriasDaoJDBC implements FeriasDAO {
 
     /*
      * Método responsável por remover uma pessoa da base de dados
-     */
+     *//*
     public boolean delete(int id) {
         Connection conn;
         try {
@@ -100,7 +100,7 @@ public class FeriasDaoJDBC implements FeriasDAO {
 
     /*
      * Método responsável por trazer as pessoas da base de dados
-     */
+     *//*
     public List<Ferias> listAll() {
         Connection conn;
         List<Ferias> ferias = new ArrayList<>();
@@ -172,5 +172,5 @@ public class FeriasDaoJDBC implements FeriasDAO {
             }
         }
         return ff;
-    }
+    }*/
 }

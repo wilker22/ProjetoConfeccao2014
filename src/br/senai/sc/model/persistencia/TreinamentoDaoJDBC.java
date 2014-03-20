@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
 
     /**
@@ -26,7 +27,37 @@ import javax.swing.JOptionPane;
 
 
 public class TreinamentoDaoJDBC implements TreinamentoDAO {
-    
+
+    @Override
+    public List<Treinamento> pesquisarNome(String nome) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Treinamento save(Treinamento cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean remove(Class<Treinamento> classe, Integer pk) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Treinamento> getAll(Class<Treinamento> classe) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Treinamento getById(Class<Treinamento> classe, Integer pk) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public EntityManager getEntityManager() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    /*
     //Declarando os métodos de INSERT, DELETE, LISTAR POR ID, UPDATE, PESQUISAR E LISTAR TODOS de TREINAMENTO
     private final String INSERT = "insert into treinamento (nm_treinamento, carga_horaria, conteudo, id_treinamento) values (?,?,?,?)";
     
@@ -54,7 +85,7 @@ public class TreinamentoDaoJDBC implements TreinamentoDAO {
      * @return 
      */
   
-
+/*
     public boolean insert(Treinamento treina) {
         Connection conn;
         try{
@@ -94,7 +125,7 @@ public class TreinamentoDaoJDBC implements TreinamentoDAO {
      * @param treina
      * @return 
      */
-    
+    /*
     public boolean update(Treinamento treina) {
          Connection conn;
          
@@ -133,7 +164,7 @@ public class TreinamentoDaoJDBC implements TreinamentoDAO {
      * @return 
      */
     
-    
+    /*
     public boolean delete(int id) {
          Connection conn;
          
@@ -164,7 +195,7 @@ public class TreinamentoDaoJDBC implements TreinamentoDAO {
      * @param treina
      * @return 
      */
-
+/*
     public List<Treinamento> listAll() {
          Connection conn;
          
@@ -208,7 +239,7 @@ public class TreinamentoDaoJDBC implements TreinamentoDAO {
      * @param treina
      * @return 
      */
-    
+    /*
      public List<Treinamento> listPesquisa(String texto) {
         
         Connection con = null;
@@ -267,7 +298,7 @@ public class TreinamentoDaoJDBC implements TreinamentoDAO {
      * @param treina
      * @return 
      */
-     
+     /*
         public Treinamento listById(int id) {
         
         Connection con = null;
@@ -313,5 +344,5 @@ public class TreinamentoDaoJDBC implements TreinamentoDAO {
     }
       return treina;
 
-    }
+    }*/
 }

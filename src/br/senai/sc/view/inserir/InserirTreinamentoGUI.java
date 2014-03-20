@@ -34,7 +34,7 @@ public class InserirTreinamentoGUI extends javax.swing.JFrame {
         this.linhaSelecionada = linhaSelecionada;
 
         TreinamentoController tc = new TreinamentoController();
-        Treinamento treina = tc.listById(idTreinamento);
+        Treinamento treina = tc.listarTreinamentoById(idTreinamento);
 
 
         txCodigoTreinamento.setText(String.valueOf(treina.getId()));
@@ -228,7 +228,7 @@ public class InserirTreinamentoGUI extends javax.swing.JFrame {
 
                 treina.setId(Integer.parseInt(txCodigoTreinamento.getText()));
 
-                tc.update(treina);
+                tc.salvar(treina);
                 modelo.removeRow(linhaSelecionada);
                 modelo.addRow(new Object[]{treina.getId(), treina.getNome(), treina.getCargaHoraria(), treina.getConteudo()});
 
@@ -236,7 +236,7 @@ public class InserirTreinamentoGUI extends javax.swing.JFrame {
 
 
             } else {
-                boolean id = tc.inserir(treina);
+                Treinamento id = tc.salvar(treina);
                 modelo.addRow(new Object[]{id, treina.getNome(), treina.getCargaHoraria(), treina.getConteudo()});
 
                 this.dispose();

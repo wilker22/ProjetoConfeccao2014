@@ -14,90 +14,13 @@ import java.util.List;
      * @return 
      */
 
-public interface TreinamentoDAO {
+public interface TreinamentoDAO extends DAO<Treinamento, Integer> {
     
+ 	
+     List <Treinamento> pesquisarNome(String nome);   
 
+    public Treinamento save(Treinamento cliente);
 
-
-    
-    
-  /**
-   * Método responsável pela inserção de um treinamento
-   * @author Bruna Zakrzeski
-   * @version 1.0 09/09/13
-   * @param treina
-   * @return 
-   */
-    
-    boolean insert(Treinamento treina);
-    
-    
-    
-    
-  /**
-   * Método responsável pela alteração de um treinamento
-   * @author Bruna Zakrzeski
-   * @version 1.0 09/09/13
-   * @param treina
-   * @return 
-   */
-    
-    boolean update(Treinamento treina);
-    
-    
-    
-    
-  /**
-   * Método responsável pela remoção de um treinamento
-   * @author Bruna Zakrzeski
-   * @version 1.0 09/09/13
-   * @param treina
-   * @return 
-   */
-    
-    boolean delete(int id);
-    
-    
-    
-    
-  /**
-   * Método responsável pela listagem de todo treinamento
-   * @author Bruna Zakrzeski
-   * @version 1.0 09/09/13
-   * @param treina
-   * @return 
-   */
-    
-    List<Treinamento> listAll();
-    
-    
-    
-    
-    
-    
-   /**
-   * Método responsável pela listar por id do treinamento
-   * @author Bruna Zakrzeski
-   * @version 1.0 09/09/13
-   * @param treina
-   * @return 
-   */
-    Treinamento listById(int id);
-    
-    
-    
-    
-    
-    
-   /**
-   * Método responsável pela listar pesquisa do treinamento
-   * @author Bruna Zakrzeski
-   * @version 1.0 09/09/13
-   * @param treina
-   * @return 
-   */
-    List<Treinamento> listPesquisa(String texto);
-    
     
     
 }
