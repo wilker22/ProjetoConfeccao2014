@@ -7,27 +7,12 @@ package br.senai.sc.model.persistencia.dao;
 import br.senai.sc.model.negocio.Ferias;
 import java.util.List;
 
-/**
- *
- * @author larissa_mezari
- */
-public interface FeriasDAO {
- 	 
-	boolean insert(Ferias f);
 
- 
-	boolean update(Ferias f);
+public interface FeriasDAO extends DAO<Ferias, Integer> {
+ 	
+     List <Ferias> pesquisarNome(String nome);   
 
- 
-	boolean delete(int id);
-
- 
-	List<Ferias> listAll();
-        
-        Ferias listById(int cod);
-
- 
-    
+    public Ferias save(Ferias cliente);
 }
  
 

@@ -33,7 +33,7 @@ public class InserirFeriasGUI extends javax.swing.JFrame {
         this.modelo = modelo;
         this.linhaSelecionada = linhaSelecionada;
         FeriasController fc = new FeriasController();
-        Ferias f = fc.listById(idFerias);
+        Ferias f = fc.listarFeriasById(idFerias);
         txNome.setText(String.valueOf(f.getFuncionario()));
         SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy");
         String data = formataData.format(f.getDataInicio());
@@ -191,7 +191,7 @@ public class InserirFeriasGUI extends javax.swing.JFrame {
 
 
         FeriasController fcc = new FeriasController();
-        fcc.insert(f);
+        fcc.salvar(f);
 
 
     }//GEN-LAST:event_btSalvarActionPerformed

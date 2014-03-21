@@ -159,7 +159,7 @@ public class ListarFeriasGUI extends javax.swing.JFrame {
         if (linhaSelecionada >= 0) {
             int idFuncionario = (int) tabela.getValueAt(linhaSelecionada, 0);
             FeriasController fc = new FeriasController();
-            if (fc.delete(idFuncionario)) {
+            if (fc.excluir(idFuncionario)) {
                 modelo.removeRow(linhaSelecionada);
             }
         } else {
@@ -195,7 +195,7 @@ public class ListarFeriasGUI extends javax.swing.JFrame {
 
     private void preencherJTable() {
         FeriasController fcc = new FeriasController();
-        for (Ferias f: fcc.listAll()) {
+        for (Ferias f: fcc.listarFerias()) {
             modelo.addRow(new Object[]{ f.getFuncionario(), f.getDataInicio(), f.getDataFim()});
         }
 

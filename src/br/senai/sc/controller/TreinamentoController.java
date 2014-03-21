@@ -2,6 +2,7 @@
 package br.senai.sc.controller;
 import br.senai.sc.model.negocio.Treinamento;
 import br.senai.sc.model.persistencia.TreinamentoDaoJDBC;
+import br.senai.sc.model.persistencia.TreinamentoDaoJPA;
 import br.senai.sc.model.persistencia.dao.TreinamentoDAO;
 import java.util.List;
 
@@ -18,98 +19,30 @@ import java.util.List;
 
 public class TreinamentoController {
     
-    
-        
-     /**
-     * Método que lista todos os treinamentos
-     * @author Bruna Zakrzeski
-     * @since 1.0  05/11/2013
-     * @param treina
-     * @return 
-     */
-    
-    public List<Treinamento> ListAll(){
-        
-    TreinamentoDAO dao = new TreinamentoDaoJDBC();
-    return dao.listAll();
+    public Treinamento salvar(Treinamento treinamento) {
+        TreinamentoDAO dao = new TreinamentoDaoJPA();
+        return dao.save(treinamento);
     }
-    
-    
-    
-     /**
-     * Método que inseri treinamento
-     * @author Bruna Zakrzeski
-     * @since 1.0  05/11/2013
-     * @param treina
-     * @return 
-     */
-    
-    public boolean inserir (Treinamento treina){
-        
-    TreinamentoDAO dao = new TreinamentoDaoJDBC();
-    return dao.insert(treina);
-    }
-    
-    
-    
-     /**
-     * Método que altera treinamento
-     * @author Bruna Zakrzeski
-     * @since 1.0  05/11/2013
-     * @param treina
-     * @return 
-     */
-    public boolean update (Treinamento treina){
-        
-    TreinamentoDAO dao = new TreinamentoDaoJDBC();
-    return dao.update(treina);
-    }
-    
-    
-    
-    /**
-     * Método que remove treinamento
-     * @author Bruna Zakrzeski
-     * @since 1.0  05/11/2013
-     * @param treina
-     * @return 
-     */
-    
-    public boolean delete (int idTreinamento){
-    
-    TreinamentoDAO dao = new TreinamentoDaoJDBC();
-    return dao.delete(idTreinamento);
-    }
-    
-    
-        
 
-    /**
-     * Método que pesquisa treinamento
-     * @author Bruna Zakrzeski
-     * @since 1.0  05/11/2013
-     * @param treina
-     * @return 
-     */
+    public boolean excluir(int codigo) {
+        TreinamentoDAO dao = new TreinamentoDaoJPA();
+        return dao.remove(Treinamento.class, codigo);
+    }
+
+    public List<Treinamento> listarTreinamento() {
+        TreinamentoDAO dao = new TreinamentoDaoJPA();
+        return dao.getAll(Treinamento.class);
+    }
+
+    public Treinamento listarTreinamentoById(int codigo) {
+        TreinamentoDAO dao = new TreinamentoDaoJPA();
+        return dao.getById(Treinamento.class, codigo);
+    }
     
-    public List<Treinamento> pesquisar (String texto){
+    public List<Treinamento> pesquisarNome(String nome){
+        TreinamentoDAO dao = new TreinamentoDaoJPA();
+        return dao.pesquisarNome(nome);
         
-        TreinamentoDAO dao = new TreinamentoDaoJDBC();
-        return dao.listPesquisa(texto);
-}
-    
-    /**
-     * Método que lista treinamento por id
-     * @author Bruna Zakrzeski
-     * @since 1.0  05/11/2013
-     * @param treina
-     * @return 
-     */
-    
-    public Treinamento listById(int id){
-        
-        TreinamentoDAO dao = new TreinamentoDaoJDBC();
-        return dao.listById(id);
     }
  
 
