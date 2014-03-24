@@ -1,9 +1,8 @@
 package br.senai.sc.model.negocio;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
 
 
 /**
@@ -16,7 +15,9 @@ public class Medida {
 
     @Id @GeneratedValue
     private int codigo;
-   //private Usuario usuario ;
+    
+    @OneToMany
+    private Usuario usuario ;
     private double mdBusto;
     private double mdCintura;
     private double mdQuadril;
@@ -34,13 +35,13 @@ public class Medida {
         this.codigo = codigo;
     }
 
-//    public Usuario getUsuario() {
-//        return usuario;
-//    }
-//
-//    public void setUsuario(Usuario Usuario) {
-//     /   this.usuario = Usuario;
-//    }
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario Usuario) {
+       this.usuario = Usuario;
+    }
 
     
 
@@ -102,8 +103,9 @@ public class Medida {
         return true;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "Medidas{" + "codigo=" + codigo + ", mdBusto=" + mdBusto + ", mdCintura=" + mdCintura + ", mdQuadril=" + mdQuadril + ", mdOmbros=" + mdOmbros + ", altura=" + altura + '}';
+        return "Medidas{" + "codigo=" + codigo + ", usuario=" + usuario + ", mdBusto=" + mdBusto + ", mdCintura=" + mdCintura + ", mdQuadril=" + mdQuadril + ", mdOmbros=" + mdOmbros + ", altura=" + altura + '}';
     }
 }
+
