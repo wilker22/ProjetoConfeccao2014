@@ -1,6 +1,4 @@
-
 package br.senai.sc.view.list;
-
 
 import br.senai.sc.model.negocio.Fabricante;
 import br.senai.sc.view.inserir.InserirFabricanteGUI;
@@ -14,13 +12,11 @@ import br.senai.sc.controller.FabricanteController;
  * @author Mateus Generoso
  * @version 1.0 30/10/2013
  */
-
-
 public class ListarFabricanteGUI extends javax.swing.JFrame {
 
     private JTable tabela;
     private DefaultTableModel modelo = new DefaultTableModel();
-    
+
     public ListarFabricanteGUI() {
         initComponents();
         criaJTable();
@@ -120,33 +116,29 @@ public class ListarFabricanteGUI extends javax.swing.JFrame {
     private void btEditarFabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarFabricanteActionPerformed
         int linhaSelecionada = -1;
         linhaSelecionada = tabela.getSelectedRow();
-        if (linhaSelecionada >=0){
-            int codFabricante = (int)
-            tabela.getValueAt(linhaSelecionada, 0);
+        if (linhaSelecionada >= 0) {
+            int codFabricante = (int) tabela.getValueAt(linhaSelecionada, 0);
             FabricanteController fc = new FabricanteController();
             InserirFabricanteGUI ing = new InserirFabricanteGUI(modelo, linhaSelecionada, codFabricante, this);
             ing.setVisible(true);
 
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "É necessário selecionar uma linha!");
         }
     }//GEN-LAST:event_btEditarFabricanteActionPerformed
 
     private void btExcluirFabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirFabricanteActionPerformed
-        Fabricante fab = new Fabricante();
         int linhaSelecionada = -1;
         linhaSelecionada = tabela.getSelectedRow();
-        if (linhaSelecionada >=0){
-            int codFabricante = (int)
-            tabela.getValueAt(linhaSelecionada, 0);
-            fab.setCod(codFabricante);
-            FabricanteController fc = new FabricanteController();
-            if (fc.delete(fab)){
+        if (linhaSelecionada >= 0) {
+            int codFabricante = (int) tabela.getValueAt(linhaSelecionada, 0);
 
+            FabricanteController fc = new FabricanteController();
+
+            if (fc.excluir(codFabricante)) {
                 modelo.removeRow(linhaSelecionada);
             }
-
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "É necessário selecionar uma linha");
         }
 
@@ -155,13 +147,11 @@ public class ListarFabricanteGUI extends javax.swing.JFrame {
     private void txPesquisarFabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txPesquisarFabricanteActionPerformed
         FabricanteController fc = new FabricanteController();
         modelo.setNumRows(0);
-        for (Fabricante fab: fc.pesquisa(txPesquisarFabricante.getText())){
+        for (Fabricante fab : fc.listarNome(txPesquisarFabricante.getText())) {
             modelo.addRow(new Object[]{fab.getCod(), fab.getNmFantasia(), fab.getCnpj(), fab.getTelefone(), fab.getEmail()});
             System.out.println(fab.getCnpj());
         }
     }//GEN-LAST:event_txPesquisarFabricanteActionPerformed
-
-  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditarFabricante;
     private javax.swing.JButton btExcluirFabricante;
@@ -173,30 +163,33 @@ public class ListarFabricanteGUI extends javax.swing.JFrame {
     private javax.swing.JTextField txPesquisarFabricante;
     // End of variables declaration//GEN-END:variables
 
-/**
- * Método responsável pela criação da tabela que gerará a lista de dados do banco
- * @author Mateus Generoso
- * @since 1.0 05/11/2013
- */
-private void criaJTable() {
+    /**
+     * Método responsável pela criação da tabela que gerará a lista de dados do
+     * banco
+     *
+     * @author Mateus Generoso
+     * @since 1.0 05/11/2013
+     */
+    private void criaJTable() {
         tabela = new JTable(modelo);
         modelo.addColumn("COD");
         modelo.addColumn("Nome Fantasia");
         modelo.addColumn("CNPJ");
         modelo.addColumn("Telefone");
         modelo.addColumn("E-mail");
-        
+
         preencherJTable();
     }
 
-/**
- * Método responsável por prencher a tabela com os registros
- * @author Mateus Generoso
- * @since 1.0 05/11/2013
- */
-private void preencherJTable() {
-         FabricanteController fc = new FabricanteController();
-        for (Fabricante fab : fc.listAll()) {
+    /**
+     * Método responsável por prencher a tabela com os registros
+     *
+     * @author Mateus Generoso
+     * @since 1.0 05/11/2013
+     */
+    private void preencherJTable() {
+        FabricanteController fc = new FabricanteController();
+        for (Fabricante fab : fc.listarTodos()) {
             modelo.addRow(new Object[]{fab.getCod(), fab.getNmFantasia(), fab.getCnpj(), fab.getTelefone(), fab.getEmail()});
         }
     }
