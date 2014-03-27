@@ -4,15 +4,24 @@
  */
 package br.senai.sc.model.negocio;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+
 /**
  * @version 1.0 28/08/2013
  * @author gustavo_lourenco
  */
+@Entity
 public class TipoFisico {
 
+    @Id
+    @GeneratedValue
     private int codigo;
     private String genero;
     private String nome;
+    @Lob
     private String descricao;
 
     public TipoFisico() {

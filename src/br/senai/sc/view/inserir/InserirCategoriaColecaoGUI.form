@@ -42,9 +42,9 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="404" max="-2" attributes="0"/>
-                                  <Component id="btSalvar" max="32767" attributes="0"/>
+                                  <Component id="btSalvar" pref="112" max="32767" attributes="0"/>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btCancelar" max="32767" attributes="0"/>
+                                  <Component id="btCancelar" pref="112" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">

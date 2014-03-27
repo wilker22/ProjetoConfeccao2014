@@ -1,9 +1,8 @@
 package br.senai.sc.controller;
 
 import br.senai.sc.model.negocio.CategoriaColecao;
-import br.senai.sc.model.persistencia.CategoriaColecaoDaoJDBC;
+import br.senai.sc.model.persistencia.CategoriaColecaoDaoJPA;
 import br.senai.sc.model.persistencia.dao.CategoriaColecaoDAO;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -13,33 +12,30 @@ import java.util.List;
  */
 public class CategoriaColecaoController {
 
-    public int inserir(CategoriaColecao cc) {
-        CategoriaColecaoDAO dao = new CategoriaColecaoDaoJDBC();
-        return dao.insert(cc);
+    public CategoriaColecao salvar(CategoriaColecao cc) {
+        CategoriaColecaoDAO dao = new CategoriaColecaoDaoJPA();
+        return dao.save(cc);
     }
 
-    public int atualizar(CategoriaColecao cc) {
-        CategoriaColecaoDAO dao = new CategoriaColecaoDaoJDBC();
-        return dao.update(cc);
+    public boolean excluir(int codigo) {
+        CategoriaColecaoDAO dao = new CategoriaColecaoDaoJPA();
+        return dao.remove(CategoriaColecao.class, codigo);
+
     }
 
-    public boolean deletar(int id) {
-        CategoriaColecaoDAO dao = new CategoriaColecaoDaoJDBC();
-        return dao.delete(id);
+    public List<CategoriaColecao> listarCategoriaColecao() {
+        CategoriaColecaoDAO dao = new CategoriaColecaoDaoJPA();
+        return dao.getAll(CategoriaColecao.class);
     }
 
-    public List<CategoriaColecao> listarTodas() {
-        CategoriaColecaoDAO dao = new CategoriaColecaoDaoJDBC();
-        return dao.listAll();
+    public CategoriaColecao listarCategoriaColecaoById(int codCategoriaColecao) {
+        CategoriaColecaoDAO dao = new CategoriaColecaoDaoJPA();
+        return dao.getById(CategoriaColecao.class, codCategoriaColecao);
+
     }
 
-    public CategoriaColecao listarId(int id) {
-        CategoriaColecaoDAO dao = new CategoriaColecaoDaoJDBC();
-        return dao.listId(id);
-    }
-
-    public List<CategoriaColecao> listarNome(String nome) {
-        CategoriaColecaoDAO dao = new CategoriaColecaoDaoJDBC();
-        return dao.listName(nome);
+    public List<CategoriaColecao> pesquisarNome(String nome) {
+        CategoriaColecaoDAO dao = new CategoriaColecaoDaoJPA();
+        return dao.pesquisaNome(nome);
     }
 }

@@ -16,8 +16,13 @@ public class Medida {
   //  @Id @GeneratedValue
     private int codigo;
     
+
 //    @OneToMany
 //    private Usuario usuario ;
+
+ //   @OneToMany
+    private Usuario usuario ;
+
     private double mdBusto;
     private double mdCintura;
     private double mdQuadril;
