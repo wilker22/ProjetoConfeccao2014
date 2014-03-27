@@ -4,7 +4,7 @@
  */
 package br.senai.sc.view.inserir;
 
-import br.senai.sc.controller.FabricantesController;
+import br.senai.sc.controller.FabricanteController;
 import br.senai.sc.controller.FerramentaController;
 import br.senai.sc.model.negocio.Fabricante;
 import br.senai.sc.model.negocio.Ferramenta;
@@ -254,7 +254,7 @@ private void carregarComboFabricante() {
         DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbFabricante.getModel();
         comboModel.removeAllElements();
         List<Fabricante> f = new ArrayList<>();
-        FabricantesController fc = new FabricantesController();
+        FabricanteController fc = new FabricanteController();
         f = fc.listAll();
 
         for (int linha = 0; linha < f.size(); linha++) {
