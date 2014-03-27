@@ -10,10 +10,10 @@ import javax.persistence.OneToMany;
  * @author bruna_zakrzeski
  */
 
-@Entity
+//@Entity
 public class Medida {
 
-    @Id @GeneratedValue
+  //  @Id @GeneratedValue
     private int codigo;
     
 //    @OneToMany
