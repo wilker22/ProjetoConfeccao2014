@@ -2,13 +2,12 @@ package br.senai.sc.controller;
 
 import br.senai.sc.model.negocio.Produto;
 import br.senai.sc.model.persistencia.ProdutoDaoJPA;
-
 import br.senai.sc.model.persistencia.dao.ProdutoDAO;
 import java.util.List;
 
 public class ProdutoController {
 
-    public Object salvar(Produto produto) {
+    public Produto salvar(Produto produto) {
         ProdutoDAO dao = new ProdutoDaoJPA();
         return dao.save(produto);
     }
@@ -23,9 +22,14 @@ public class ProdutoController {
         return dao.getAll(Produto.class);
     }
 
-    public Object listarTreinamentoById(int codigo) {
+    public Produto listarProdutoById(int codigo) {
         ProdutoDAO dao = new ProdutoDaoJPA();
         return dao.getById(Produto.class, codigo);
+    }
+
+    public List<Produto> listarNome(String nome) {
+        ProdutoDAO dao = new ProdutoDaoJPA();
+        return dao.listarNome(nome);
     }
 }
 //    public List<Produto> listAll() {

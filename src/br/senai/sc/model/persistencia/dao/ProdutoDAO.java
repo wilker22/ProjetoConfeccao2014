@@ -1,19 +1,11 @@
 package br.senai.sc.model.persistencia.dao;
 
-
+import br.senai.sc.model.negocio.Produto;
 import java.util.List;
-import javax.persistence.EntityManager;
 
-public interface ProdutoDAO <T, I>{
-    
-    T save(T entity);
-    boolean remove (Class<T> classe, I pk);
-    List<T> getAll(Class<T> classe);
-    T getById(Class<T> classe, I pk);
-    
-    EntityManager getEntityManager();
+public interface ProdutoDAO extends DAO<Produto, Integer> {
+    List<Produto> listarNome(String nome);
 }
-
 //    /**
 //     * Método responsável pela inserção de um Produto
 //     *
