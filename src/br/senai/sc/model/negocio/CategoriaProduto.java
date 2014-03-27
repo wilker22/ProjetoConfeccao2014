@@ -1,11 +1,17 @@
 package br.senai.sc.model.negocio;
 
 import java.util.Objects;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+@Entity
 public class CategoriaProduto {
-
+    @Id
+    @GeneratedValue
     private int codCategoriaProduto;
     private String nomeCategoriaProduto;
+    @Lob
     private String descricaoCategoriaProduto;
 
     public CategoriaProduto() {
