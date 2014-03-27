@@ -135,7 +135,7 @@ public class ListarProdutoGUI extends javax.swing.JFrame {
         if (linhaSelecionada >= 0) {
             int idFuncao = (int) tabela.getValueAt(linhaSelecionada, 0);
             ProdutoController pc = new ProdutoController();
-            if (pc.delete(idFuncao)) {
+            if (pc.excluir(idFuncao)) {
                 modelo.removeRow(linhaSelecionada);
             }
         } else {
@@ -147,7 +147,7 @@ public class ListarProdutoGUI extends javax.swing.JFrame {
     private void txPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txPesquisarActionPerformed
         ProdutoController pc = new ProdutoController();
         modelo.setNumRows(0);
-        for (Produto p : pc.search(txPesquisar.getText())) {
+        for (Produto p : pc.listarNome(txPesquisar.getText())) {
             modelo.addRow(new Object[]{
                 p.getCodProduto(),
                 p.getNome(),
@@ -204,7 +204,7 @@ public class ListarProdutoGUI extends javax.swing.JFrame {
 
     private void preencherJTable() {
         ProdutoController pc = new ProdutoController();
-        for (Produto p : pc.listAll()) {
+        for (Produto p : pc.listarProduto()) {
             modelo.addRow(new Object[]{
                 p.getCodProduto(),
                 p.getNome(),
