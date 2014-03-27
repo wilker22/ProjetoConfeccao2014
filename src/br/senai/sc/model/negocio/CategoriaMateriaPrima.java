@@ -14,7 +14,7 @@ import javax.persistence.Lob;
  */
 @Entity
 public class CategoriaMateriaPrima {
-    //declaraĂ§ĂŁo das variĂˇveis
+    //declaraA§ALo das variA?veis
     @Id
     @GeneratedValue
     private int cod;
@@ -50,7 +50,7 @@ public class CategoriaMateriaPrima {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    //para mostrar os atributos da categoria matĂ©ria-prima
+    //para mostrar os atributos da categoria matA©ria-prima
 
     @Override
     public String toString() {
@@ -65,7 +65,7 @@ public class CategoriaMateriaPrima {
         return hash;
     }
 
-    //equals:faz comparaĂ§Ăµes se Ă© sĂł nĂşmeros ou letras
+    //equals:faz comparaA§Aµes se A© sAl nAsmeros ou letras
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
