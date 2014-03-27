@@ -184,7 +184,7 @@ public class ListarCategoriaColecaoGUI extends javax.swing.JFrame {
             int idCategoriaColecao = (int) tabela.getValueAt(linhaSelecionada, 0);
 
             CategoriaColecaoController ccc = new CategoriaColecaoController();
-            if (ccc.deletar(idCategoriaColecao)) {
+            if (ccc.excluir(idCategoriaColecao)) {
                 modelo.removeRow(linhaSelecionada);
             }
 
@@ -195,7 +195,7 @@ public class ListarCategoriaColecaoGUI extends javax.swing.JFrame {
         String nome = txPesquisa.getText();
         modelo.setNumRows(0);
         CategoriaColecaoController ccc = new CategoriaColecaoController();
-        for (CategoriaColecao cc : ccc.listarNome(nome)) {
+        for (CategoriaColecao cc : ccc.pesquisarNome(nome)) {
             modelo.addRow(new Object[]{cc.getCodCategoriaColecao(), cc.getNomeCategoriaColecao(), cc.getDescricaoCategoriaColecao()});
         }
     }//GEN-LAST:event_txPesquisaActionPerformed
@@ -231,7 +231,7 @@ public class ListarCategoriaColecaoGUI extends javax.swing.JFrame {
 
     private void preencherTabela() {
         CategoriaColecaoController ccc = new CategoriaColecaoController();
-        for (CategoriaColecao cc : ccc.listarTodas()) {
+        for (CategoriaColecao cc : ccc.listarCategoriaColecao()) {
             modelo.addRow(new Object[]{cc.getCodCategoriaColecao(), cc.getNomeCategoriaColecao(), cc.getDescricaoCategoriaColecao()});
         }
     }

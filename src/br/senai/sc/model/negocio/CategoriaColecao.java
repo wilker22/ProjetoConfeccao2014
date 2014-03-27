@@ -1,6 +1,10 @@
 package br.senai.sc.model.negocio;
 
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
 
 /**
  * Classe CategoriaColecao * A classe possui atributos para cadastrar categorias
@@ -9,10 +13,13 @@ import java.util.Objects;
  * @version v1.0 28/08/2013
  * @author Gabriel Arsênio
  */
+@Entity
 public class CategoriaColecao {
-    
+    @Id
+    @GeneratedValue
     private int codCategoriaColecao;
     private String nomeCategoriaColecao;
+    @Lob
     private String descricaoCategoriaColecao;
 
     public CategoriaColecao() {

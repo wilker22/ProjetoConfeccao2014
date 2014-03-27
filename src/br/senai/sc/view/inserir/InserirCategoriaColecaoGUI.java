@@ -72,7 +72,7 @@ public class InserirCategoriaColecaoGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         CategoriaColecaoController ccc = new CategoriaColecaoController();
-        CategoriaColecao cc = ccc.listarId(idUsuario);
+        CategoriaColecao cc = ccc.listarCategoriaColecaoById(idUsuario);
         txCodigo.setText(Integer.toString(cc.getCodCategoriaColecao()));
         txNomeCategoria.setText(cc.getNomeCategoriaColecao());
         txDescricao.setText(cc.getDescricaoCategoriaColecao());
@@ -221,7 +221,7 @@ public class InserirCategoriaColecaoGUI extends javax.swing.JFrame {
         if (camposCorretos == true) {
             if (cc.getCodCategoriaColecao() == 0) {
 
-                int id = ccc.inserir(cc);
+                int id = ccc.salvar(cc).getCodCategoriaColecao();
                 if (id > 0) {
                     System.out.println("Cadastrado com sucesso.");
 
@@ -229,7 +229,7 @@ public class InserirCategoriaColecaoGUI extends javax.swing.JFrame {
 
             } else {
 
-                int id = ccc.atualizar(cc);
+                int id = ccc.salvar(cc).getCodCategoriaColecao();
                 if (id > 0) {
                     System.out.println("Atualizado com sucesso.");
                     modelo.removeRow(linhaSelecionada);

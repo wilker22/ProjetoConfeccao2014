@@ -157,7 +157,7 @@ public class ListarTipoFisicoGUI extends javax.swing.JFrame {
         String texto = txPesquisa.getText();
         modelo.setNumRows(0);
         TipoFisicoController tfc = new TipoFisicoController();
-        for (TipoFisico tf : tfc.pesquisar(texto)) {
+        for (TipoFisico tf : tfc.pesquisarNome(texto)) {
             modelo.addRow(new Object[]{tf.getCodigo(), tf.getNome(), tf.getDescicao(), tf.getGenero()});
         }
 
@@ -174,7 +174,7 @@ public class ListarTipoFisicoGUI extends javax.swing.JFrame {
                 int idTipoFisico = (int) tabela.getValueAt(linhaSelecionada, 0);
 
                 TipoFisicoController tfc = new TipoFisicoController();
-                if (tfc.delete(idTipoFisico)) {
+                if (tfc.excluir(idTipoFisico)) {
                     modelo.removeRow(linhaSelecionada);
                 }
             } catch (Exception ex) {
@@ -218,7 +218,7 @@ public class ListarTipoFisicoGUI extends javax.swing.JFrame {
      */
     private void preencherJTable() {
         TipoFisicoController tfc = new TipoFisicoController();
-        for (TipoFisico tf : tfc.listAll()) {
+        for (TipoFisico tf : tfc.listarTipoFisico()) {
             modelo.addRow(new Object[]{tf.getCodigo(), tf.getNome(), tf.getDescicao(), tf.getGenero()});
         }
     }
