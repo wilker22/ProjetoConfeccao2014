@@ -7,16 +7,19 @@ import java.util.List;
  * @version 1.0 21/09/2013
  * @author patricia_gageiro
  */
-public interface FuncionarioDAO {
+public interface FuncionarioDAO extends DAO <Funcionario, Integer> {
+    
+   
+    List <Funcionario> pesquisarNome(String nome);
 
-    /*
+     /*
      * Método responsável pela inserção de um funcionário.
      * @since 1.0 05/11/2013
      * @author Patricia Gageiro
      * @param p
      * @return
      * 
-     */
+     *
     int insert(Funcionario fun);
 
     /*
@@ -26,7 +29,7 @@ public interface FuncionarioDAO {
      * @param p
      * @return
      * 
-     */
+     *
     boolean update(Funcionario fun);
 
 
@@ -36,7 +39,7 @@ public interface FuncionarioDAO {
      * @author Patricia Gageiro
      * @param p
      * @return
-     */
+     *
     boolean delete(Funcionario fun);
 
     
@@ -46,7 +49,7 @@ public interface FuncionarioDAO {
      * @author Patricia Gageiro
      * @param p
      * @return
-     */
+     *
     Funcionario listById(int id);
     
     /**
@@ -55,7 +58,7 @@ public interface FuncionarioDAO {
      *@author Patricia Gageiro
      *@param id
      *@return
-     */
+     *
 
     public List<Funcionario> listAll();
     
@@ -66,7 +69,7 @@ public interface FuncionarioDAO {
      *@since 1.0 05/11/2013
      *@param texto
      *@return 
-     */
+     *
     List<Funcionario> ListPesquisa(String texto);
-
+*/
 }

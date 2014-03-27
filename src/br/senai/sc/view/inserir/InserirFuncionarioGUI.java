@@ -35,7 +35,7 @@ public class InserirFuncionarioGUI extends javax.swing.JFrame {
         this.linhaSelecionada = linhaSelecionada;
 
         FuncionarioController fc = new FuncionarioController();
-        Funcionario fun = fc.listById(idFuncionario);
+        Funcionario fun = fc.listarFuncionarioById(idFuncionario);
         //Preechemento dos dados do funcionário
         txIdFuncionario.setText(String.valueOf(fun.getCod()));
         txNomeFuncionario.setText(fun.getNome());
@@ -203,7 +203,7 @@ public class InserirFuncionarioGUI extends javax.swing.JFrame {
         btSalvar.setBackground(new java.awt.Color(255, 255, 255));
         btSalvar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btSalvar.setForeground(new java.awt.Color(102, 102, 102));
-        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/inserir.jpg"))); // NOI18N
+        btSalvar.setText("Salvar");
         btSalvar.setBorderPainted(false);
         btSalvar.setContentAreaFilled(false);
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -215,7 +215,7 @@ public class InserirFuncionarioGUI extends javax.swing.JFrame {
         btExcluir.setBackground(new java.awt.Color(255, 255, 255));
         btExcluir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btExcluir.setForeground(new java.awt.Color(102, 102, 102));
-        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/limpar.jpg"))); // NOI18N
+        btExcluir.setText("Limpar");
         btExcluir.setBorderPainted(false);
         btExcluir.setContentAreaFilled(false);
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -226,46 +226,22 @@ public class InserirFuncionarioGUI extends javax.swing.JFrame {
 
         txIdFuncionario.setEditable(false);
 
-        try {
-            txTelefoneFuncionario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txTelefoneFuncionario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
 
-        try {
-            txCpfFuncionario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txCpfFuncionario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
 
-        try {
-            txDtNascimentoFuncionario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txDtNascimentoFuncionario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
 
-        try {
-            txDtCadastroFuncionario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txDtCadastroFuncionario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
 
-        try {
-            txDtAdmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txDtAdmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         txDtAdmissao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txDtAdmissaoActionPerformed(evt);
             }
         });
 
-        try {
-            txDtRecisao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txDtRecisao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
 
         javax.swing.GroupLayout painelFuncionarioLayout = new javax.swing.GroupLayout(painelFuncionario);
         painelFuncionario.setLayout(painelFuncionarioLayout);
@@ -516,12 +492,12 @@ public class InserirFuncionarioGUI extends javax.swing.JFrame {
             if (!(txIdFuncionario.getText().equals("")
                     || (txIdFuncionario.getText().equals(null)))) {
                 fun.setCod(Integer.parseInt(txIdFuncionario.getText()));
-                fc.update(fun);
+                fc.salvar(fun);
                 modelo.removeRow(linhaSelecionada);
                 modelo.addRow(new Object[]{fun.getCod(), fun.getNome(), fun.getEmail(), fun.getTelefone()});
                 this.dispose();
             } else {
-                int id = fc.inserir(fun);
+                Funcionario id = fc.salvar(fun);
                 modelo.addRow(new Object[]{id, fun.getNome(), fun.getEmail(), fun.getTelefone()});
                 this.dispose();
             }
