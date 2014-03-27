@@ -1,18 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senai.sc.model.negocio;
 
-
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
 
-/**
- *
- * @author evaldo_matias
- */
+@Entity
 public class Curriculo {
 
+    @Id
+    @GeneratedValue
     private int codigo;
     private String login;
     private String senha;
@@ -24,12 +22,14 @@ public class Curriculo {
     private String cargo;
     private String rg;
     private String salario;
-    private Date dataadimissao;
-    private Date datanascimento;
-    private Date datarecisao;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataAdmissao;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataNascimento;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataRecisao;
     private String status;
     private String experienciaprofissional;
- 
 
     public int getCodigo() {
         return codigo;
@@ -119,28 +119,28 @@ public class Curriculo {
         this.salario = salario;
     }
 
-    public Date getDataadimissao() {
-        return dataadimissao;
+    public Date getDataAdmissao() {
+        return dataAdmissao;
     }
 
-    public void setDataadimissao(Date dataadimissao) {
-        this.dataadimissao = dataadimissao;
+    public void setDataAdmissao(Date dataAdmissao) {
+        this.dataAdmissao = dataAdmissao;
     }
 
-    public Date getDatanascimento() {
-        return datanascimento;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDatanascimento(Date datanascimento) {
-        this.datanascimento = datanascimento;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
-    public Date getDatarecisao() {
-        return datarecisao;
+    public Date getDataRecisao() {
+        return dataRecisao;
     }
 
-    public void setDatarecisao(Date datarecisao) {
-        this.datarecisao = datarecisao;
+    public void setDataRecisao(Date dataRecisao) {
+        this.dataRecisao = dataRecisao;
     }
 
     public String getStatus() {
@@ -159,13 +159,8 @@ public class Curriculo {
         this.experienciaprofissional = experienciaprofissional;
     }
 
-    
     @Override
     public String toString() {
         return "Curriculo{" + '}';
     }
-
-    
-
-
 }

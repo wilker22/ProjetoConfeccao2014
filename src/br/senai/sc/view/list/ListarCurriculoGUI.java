@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senai.sc.view.list;
 
 import br.senai.sc.controller.CurriculoController;
@@ -11,26 +7,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-
-
-
-
-/**
- *
- * @author evaldo_matias
- */
 public class ListarCurriculoGUI extends javax.swing.JFrame {
 
     private JTable tabela;
     private DefaultTableModel modelo = new DefaultTableModel();
 
-    /**
-     * Creates new form ListarCurriculo
-     */
     public ListarCurriculoGUI() {
         initComponents();
         criaJTable();
-        sroll.setViewportView(tabela);
+        scroll.setViewportView(tabela);
     }
 
     @SuppressWarnings("unchecked")
@@ -40,7 +25,7 @@ public class ListarCurriculoGUI extends javax.swing.JFrame {
         PeinalFundo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txPesquisa = new javax.swing.JTextField();
-        sroll = new javax.swing.JScrollPane();
+        scroll = new javax.swing.JScrollPane();
         btRemover = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
         btInserir = new javax.swing.JButton();
@@ -94,7 +79,7 @@ public class ListarCurriculoGUI extends javax.swing.JFrame {
             .addGroup(PeinalFundoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PeinalFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sroll)
+                    .addComponent(scroll)
                     .addGroup(PeinalFundoLayout.createSequentialGroup()
                         .addGroup(PeinalFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PeinalFundoLayout.createSequentialGroup()
@@ -121,7 +106,7 @@ public class ListarCurriculoGUI extends javax.swing.JFrame {
                     .addComponent(btRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btInserir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sroll, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -142,7 +127,7 @@ public class ListarCurriculoGUI extends javax.swing.JFrame {
         if (linhaSelecionada >= 0) {
             int idCurriculo = (int) tabela.getValueAt(linhaSelecionada, 0);
             CurriculoController fc = new CurriculoController();
-            if (fc.remove(idCurriculo)) {
+            if (fc.excluir(idCurriculo)) {
                 modelo.removeRow(linhaSelecionada);
             }
         } else {
@@ -165,11 +150,11 @@ public class ListarCurriculoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void txPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txPesquisaActionPerformed
-        CurriculoController fc = new CurriculoController();
-        modelo.setNumRows(0);
-        for (Curriculo c : fc.pesquisar(txPesquisa.getText())) {
-            modelo.addRow(new Object[]{c.getCodigo(), c.getNome(),c.getStatus()});
-        }
+//        CurriculoController fc = new CurriculoController();
+//        modelo.setNumRows(0);
+//        for (Curriculo c : fc.pesquisar(txPesquisa.getText())) {
+//            modelo.addRow(new Object[]{c.getCodigo(), c.getNome(),c.getStatus()});
+//        }
     }//GEN-LAST:event_txPesquisaActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PeinalFundo;
@@ -177,7 +162,7 @@ public class ListarCurriculoGUI extends javax.swing.JFrame {
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btRemover;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane sroll;
+    private javax.swing.JScrollPane scroll;
     private javax.swing.JTextField txPesquisa;
     // End of variables declaration//GEN-END:variables
 
@@ -191,17 +176,8 @@ public class ListarCurriculoGUI extends javax.swing.JFrame {
 
     private void preencherTabela() {
         CurriculoController fc = new CurriculoController();
-        for (Curriculo f : fc.listarTodos()) {
+        for (Curriculo f : fc.listarCurriculos()) {
             modelo.addRow(new Object[]{f.getCodigo(), f.getNome(), f.getStatus()});
         }
     }
-     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-
-                new ListarCurriculoGUI().setVisible(true);
-
-            }
-        });
-     }
 }
