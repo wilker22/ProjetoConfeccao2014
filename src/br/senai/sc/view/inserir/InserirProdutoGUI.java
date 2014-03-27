@@ -37,7 +37,7 @@ public class InserirProdutoGUI extends javax.swing.JFrame {
 
         this.linhaSelecionada = linhaSelecionada;
         ProdutoController pc = new ProdutoController();
-        Produto p = pc.listById(idProduto);
+        Produto p = pc.listarProdutoById(idProduto);
         txId.setText(String.valueOf(p.getCodProduto()));
         txNome.setText(p.getNome());
         cbFabricante.setSelectedItem(p.getFabricante().getNmFantasia());
@@ -313,7 +313,7 @@ public class InserirProdutoGUI extends javax.swing.JFrame {
 
             if (!((txId.getText().equals("")) || (txId.getText().equals(null)))) {
                 p.setCodProduto(Integer.parseInt(txId.getText()));
-                pc.update(p);
+                pc.salvar(p);
                 modelo.removeRow(linhaSelecionada);
                 modelo.addRow(new Object[]{
                     p.getCodProduto(),
@@ -330,7 +330,7 @@ public class InserirProdutoGUI extends javax.swing.JFrame {
 
                 this.dispose();
             } else {
-                pc.insert(p);
+                pc.salvar(p);
                 modelo.addRow(new Object[]{
                     p.getCodProduto(),
                     p.getNome(),
@@ -448,7 +448,7 @@ public class InserirProdutoGUI extends javax.swing.JFrame {
         comboModel.removeAllElements();
         List<Fabricante> f = new ArrayList<>();
         FabricanteController fc = new FabricanteController();
-        f = fc.listAll();
+        f = fc.listarTodos();
 
         for (int linha = 0; linha < f.size(); linha++) {
             Fabricante fb = f.get(linha);
