@@ -17,18 +17,18 @@ import javax.persistence.Temporal;
  * @author Larissa Mezari
  */
 
-@Entity
+//@Entity
 public class Ferias {
 
     public static void add(Ferias f) {
         
     }
-    @Id
-    @GeneratedValue
+  //  @Id
+ //   @GeneratedValue
     private Funcionario funcionario;
-    @Temporal(javax.persistence.TemporalType.DATE)
+  //  @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataInicio;
-    @Temporal(javax.persistence.TemporalType.DATE)
+  //  @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataFim;
 
     //Construtor padrão
