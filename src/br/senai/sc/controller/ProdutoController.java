@@ -8,80 +8,92 @@ import java.util.List;
 
 public class ProdutoController {
 
-    /**
-     * Método responsável por listar todos os dados da tabela produtos
-     *
-     * @author Gustavo Motta Agustinho
-     * @version 1.0 05/11/2013
-     * @return
-     */
-    public List<Produto> listAll() {
+    public Object salvar(Produto produto) {
         ProdutoDAO dao = new ProdutoDaoJPA();
-        return dao.listAll();
+        return dao.save(produto);
     }
 
-    /**
-     * Método resonsável por inserir dados na tabela produtos
-     *
-     * @author Gustavo Motta Agustinho
-     * @version 1.0 05/11/2013
-     * @param cp
-     * @return
-     */
-    public boolean insert(Produto cp) {
+    public boolean excluir(int codigo) {
         ProdutoDAO dao = new ProdutoDaoJPA();
-        return dao.insert(cp);
+        return dao.remove(Produto.class, codigo);
     }
 
-    /**
-     * Método resonsável por atualizar dados na tabela produtos
-     *
-     * @author Gustavo Motta Agustinho
-     * @version 1.0 05/11/2013
-     * @param cp
-     * @return
-     */
-    public boolean update(Produto cp) {
+    public List<Produto> listarProduto() {
         ProdutoDAO dao = new ProdutoDaoJPA();
-        return dao.update(cp);
+        return dao.getAll(Produto.class);
     }
 
-    /**
-     * Método resonsável por deletar dados na tabela produtos
-     *
-     * @author Gustavo Motta Agustinho
-     * @version 1.0 05/11/2013
-     * @param codProduto
-     * @return
-     */
-    public boolean delete(int codProduto) {
+    public Object listarTreinamentoById(int codigo) {
         ProdutoDAO dao = new ProdutoDaoJPA();
-        return dao.delete(codProduto);
-    }
-
-    /**
-     * Método resonsável por listar por ID dados na tabela produtos
-     *
-     * @author Gustavo Motta Agustinho
-     * @version 1.0 05/11/2013
-     * @param id
-     * @return
-     */
-    public Produto listById(int idProduto) {
-        ProdutoDAO dao = new ProdutoDaoJPA();
-        return dao.listById(idProduto);
-    }
-
-    /**
-     * Método resonsável por pesquisar dados na tabela produtos
-     *
-     * @author Gustavo Motta Agustinho
-     * @version 1.0 05/11/2013
-     * @param text
-     * @return
-     */
-    public List<Produto> search(String texto) {
-        ProdutoDAO dao = new ProdutoDaoJPA();
-        return dao.search(texto);
+        return dao.getById(Produto.class, codigo);
     }
 }
+//    public List<Produto> listAll() {
+//        ProdutoDAO dao = new ProdutoDaoJPA();
+//        return dao.listAll();
+//    }
+//
+//    /**
+//     * Método resonsável por inserir dados na tabela produtos
+//     *
+//     * @author Gustavo Motta Agustinho
+//     * @version 1.0 05/11/2013
+//     * @param cp
+//     * @return
+//     */
+//    public boolean insert(Produto cp) {
+//        ProdutoDAO dao = new ProdutoDaoJPA();
+//        return dao.insert(cp);
+//    }
+//
+//    /**
+//     * Método resonsável por atualizar dados na tabela produtos
+//     *
+//     * @author Gustavo Motta Agustinho
+//     * @version 1.0 05/11/2013
+//     * @param cp
+//     * @return
+//     */
+//    public boolean update(Produto cp) {
+//        ProdutoDAO dao = new ProdutoDaoJPA();
+//        return dao.update(cp);
+//    }
+//
+//    /**
+//     * Método resonsável por deletar dados na tabela produtos
+//     *
+//     * @author Gustavo Motta Agustinho
+//     * @version 1.0 05/11/2013
+//     * @param codProduto
+//     * @return
+//     */
+//    public boolean delete(int codProduto) {
+//        ProdutoDAO dao = new ProdutoDaoJPA();
+//        return dao.delete(codProduto);
+//    }
+//
+//    /**
+//     * Método resonsável por listar por ID dados na tabela produtos
+//     *
+//     * @author Gustavo Motta Agustinho
+//     * @version 1.0 05/11/2013
+//     * @param id
+//     * @return
+//     */
+//    public Produto listById(int idProduto) {
+//        ProdutoDAO dao = new ProdutoDaoJPA();
+//        return dao.listById(idProduto);
+//    }
+//
+//    /**
+//     * Método resonsável por pesquisar dados na tabela produtos
+//     *
+//     * @author Gustavo Motta Agustinho
+//     * @version 1.0 05/11/2013
+//     * @param text
+//     * @return
+//     */
+//    public List<Produto> search(String texto) {
+//        ProdutoDAO dao = new ProdutoDaoJPA();
+//        return dao.search(texto);
+//    }}

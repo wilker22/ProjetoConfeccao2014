@@ -4,10 +4,15 @@
  */
 package br.senai.sc.model.persistencia;
 
+import br.senai.sc.model.negocio.Produto;
+import br.senai.sc.model.persistencia.dao.ProdutoDAO;
+
 /**
  *
  * @author elivelton_sipriano
  */
-public class ProdutoDaoJPA {
+public class ProdutoDaoJPA extends DAOJPA<Produto, Integer> implements ProdutoDAO {
+
+
     
 }
