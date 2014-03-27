@@ -36,7 +36,7 @@
                               <Component id="txPesquisarFuncionario" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
                               <Component id="btInserirFuncionario" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="567" max="-2" attributes="0"/>
                               <Component id="btEditarFuncionario" min="-2" pref="77" max="-2" attributes="0"/>
@@ -102,9 +102,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="12" style="0"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/inserir.jpg"/>
-        </Property>
+        <Property name="text" type="java.lang.String" value="Adicionar"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -121,9 +119,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="12" style="0"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/deletar.jpg"/>
-        </Property>
+        <Property name="text" type="java.lang.String" value="Excluir"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -139,9 +135,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="12" style="0"/>
         </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/image/editar.jpg"/>
-        </Property>
+        <Property name="text" type="java.lang.String" value="Editar"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>

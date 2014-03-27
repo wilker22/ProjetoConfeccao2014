@@ -2,6 +2,9 @@ package br.senai.sc.model.negocio;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
 
 /**
  * Classe que representa os funcionarios do software
@@ -9,14 +12,25 @@ import java.util.Objects;
  * @version 1.0 26/08/2013
  * @author Patricia Gageiro
  */
+@Entity
 public class Funcionario extends PessoaFisica {
 
+   @Column (nullable = false)
     private String login;
+     @Column (nullable = false)
     private String email;
+      @Column (nullable = false)
     private String ctps;
+       
     private String cargo;
+    
+        @Column (nullable = false)
     private double salario;
+         @Column (nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtAdmissao;
+          @Column (nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtRecisao;
 
     public String getLogin() {
@@ -74,7 +88,10 @@ public class Funcionario extends PessoaFisica {
     public void setDtRecisao(Date dtRecisao) {
         this.dtRecisao = dtRecisao;
     }
+   
 
+          
+          
     //Métodos ToString
     public String toString() {
         return getNome();

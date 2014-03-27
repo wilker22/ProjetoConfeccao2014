@@ -62,7 +62,7 @@ public class ListarFuncionarioGUI extends javax.swing.JFrame {
 
         btInserirFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         btInserirFuncionario.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        btInserirFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/inserir.jpg"))); // NOI18N
+        btInserirFuncionario.setText("Adicionar");
         btInserirFuncionario.setToolTipText("");
         btInserirFuncionario.setBorderPainted(false);
         btInserirFuncionario.setContentAreaFilled(false);
@@ -74,7 +74,7 @@ public class ListarFuncionarioGUI extends javax.swing.JFrame {
 
         btExcluirFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         btExcluirFuncionario.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        btExcluirFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/deletar.jpg"))); // NOI18N
+        btExcluirFuncionario.setText("Excluir");
         btExcluirFuncionario.setBorderPainted(false);
         btExcluirFuncionario.setContentAreaFilled(false);
         btExcluirFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +85,7 @@ public class ListarFuncionarioGUI extends javax.swing.JFrame {
 
         btEditarFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         btEditarFuncionario.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        btEditarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/editar.jpg"))); // NOI18N
+        btEditarFuncionario.setText("Editar");
         btEditarFuncionario.setToolTipText("");
         btEditarFuncionario.setBorderPainted(false);
         btEditarFuncionario.setContentAreaFilled(false);
@@ -110,7 +110,7 @@ public class ListarFuncionarioGUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txPesquisarFuncionario))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(0, 16, Short.MAX_VALUE)
                                 .addComponent(btInserirFuncionario)
                                 .addGap(567, 567, 567)
                                 .addComponent(btEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,7 +169,7 @@ public class ListarFuncionarioGUI extends javax.swing.JFrame {
             int idFuncionario = (int) tabela.getValueAt(linhaSelecionada, 0);
             fun.setCod(idFuncionario);
             FuncionarioController fc = new FuncionarioController();
-            if (fc.delete(fun)) {
+            if (fc.excluir(idFuncionario)) {
 
                 modelo.removeRow(linhaSelecionada);
             }
@@ -185,7 +185,7 @@ public class ListarFuncionarioGUI extends javax.swing.JFrame {
     private void txPesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txPesquisarFuncionarioActionPerformed
         FuncionarioController fc = new FuncionarioController();
         modelo.setNumRows(0);
-        for (Funcionario fun : fc.pesquisar(txPesquisarFuncionario.getText())) {
+        for (Funcionario fun : fc.pesquisarNome(txPesquisarFuncionario.getText())) {
             modelo.addRow(new Object[]{fun.getCod(), fun.getNome(), fun.getEmail(), fun.getTelefone()});
         }
     }//GEN-LAST:event_txPesquisarFuncionarioActionPerformed
@@ -211,7 +211,7 @@ public class ListarFuncionarioGUI extends javax.swing.JFrame {
 
     private void preencherJTable() {
         FuncionarioController fc = new FuncionarioController();
-        for (Funcionario fun : fc.listAll()) {
+        for (Funcionario fun : fc.listarFuncionario()) {
             modelo.addRow(new Object[]{fun.getCod(), fun.getNome(), fun.getEmail(), fun.getTelefone()});
         }
     }
