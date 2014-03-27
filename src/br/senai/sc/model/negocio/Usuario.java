@@ -2,6 +2,7 @@ package br.senai.sc.model.negocio;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Entity;
 
 /*
  * Classe Usuário
@@ -11,6 +12,8 @@ import java.util.Objects;
  *
  */
 // USUARIO codigo login senha nome cpf email telefone endereco dataNascimento
+
+@Entity
 public class Usuario extends PessoaFisica {
 
 	private String login;
