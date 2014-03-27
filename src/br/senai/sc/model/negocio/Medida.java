@@ -16,8 +16,8 @@ public class Medida {
     @Id @GeneratedValue
     private int codigo;
     
-    @OneToMany
-    private Usuario usuario ;
+//    @OneToMany
+//    private Usuario usuario ;
     private double mdBusto;
     private double mdCintura;
     private double mdQuadril;
@@ -35,13 +35,13 @@ public class Medida {
         this.codigo = codigo;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario Usuario) {
-       this.usuario = Usuario;
-    }
+//    public Usuario getUsuario() {
+//        return usuario;
+//    }
+//
+//    public void setUsuario(Usuario Usuario) {
+//       this.usuario = Usuario;
+//    }
 
     
 
@@ -103,9 +103,9 @@ public class Medida {
         return true;
     }
 
-     @Override
-    public String toString() {
-        return "Medidas{" + "codigo=" + codigo + ", usuario=" + usuario + ", mdBusto=" + mdBusto + ", mdCintura=" + mdCintura + ", mdQuadril=" + mdQuadril + ", mdOmbros=" + mdOmbros + ", altura=" + altura + '}';
-    }
+//     @Override
+//    public String toString() {
+//        return "Medidas{" + "codigo=" + codigo + ", usuario=" + usuario + ", mdBusto=" + mdBusto + ", mdCintura=" + mdCintura + ", mdQuadril=" + mdQuadril + ", mdOmbros=" + mdOmbros + ", altura=" + altura + '}';
+//    }
 }
 
