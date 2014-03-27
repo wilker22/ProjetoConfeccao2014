@@ -5,7 +5,7 @@ import br.senai.sc.model.negocio.Fabricante;
 import br.senai.sc.model.persistencia.FabricanteDaoJDBC;
 import br.senai.sc.model.persistencia.dao.FabricanteDAO;
 import javax.swing.table.DefaultTableModel;
-import br.senai.sc.controller.FabricantesController;
+import br.senai.sc.controller.FabricanteController;
 import br.senai.sc.validador.Validadores;
 import br.senai.sc.view.list.ListarFabricanteGUI;
 import java.text.SimpleDateFormat;
@@ -268,7 +268,7 @@ public class InserirFabricanteGUI extends javax.swing.JFrame {
         fab.setEmail(txEmail.getText());
         fab.setEndereco(txEndereco.getText());
         
-        FabricantesController fc = new FabricantesController();
+        FabricanteController fc = new FabricanteController();
         if (!(txCodFabricante.getText().equals("") || txCodFabricante.getText() == null)) {
             fab.setCod(Integer.parseInt(txCodFabricante.getText()));
 

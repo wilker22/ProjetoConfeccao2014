@@ -2,7 +2,7 @@ package br.senai.sc.view.inserir;
 
 import br.senai.sc.controller.CategoriaProdutoController;
 import br.senai.sc.controller.ColecaoController;
-import br.senai.sc.controller.FabricantesController;
+import br.senai.sc.controller.FabricanteController;
 import br.senai.sc.controller.ProdutoController;
 import br.senai.sc.model.negocio.CategoriaProduto;
 import br.senai.sc.model.negocio.Colecao;
@@ -447,7 +447,7 @@ public class InserirProdutoGUI extends javax.swing.JFrame {
         DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbFabricante.getModel();
         comboModel.removeAllElements();
         List<Fabricante> f = new ArrayList<>();
-        FabricantesController fc = new FabricantesController();
+        FabricanteController fc = new FabricanteController();
         f = fc.listAll();
 
         for (int linha = 0; linha < f.size(); linha++) {

@@ -7,7 +7,7 @@ import br.senai.sc.view.inserir.InserirFabricanteGUI;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import br.senai.sc.controller.FabricantesController;
+import br.senai.sc.controller.FabricanteController;
 
 /**
  *
@@ -123,7 +123,7 @@ public class ListarFabricanteGUI extends javax.swing.JFrame {
         if (linhaSelecionada >=0){
             int codFabricante = (int)
             tabela.getValueAt(linhaSelecionada, 0);
-            FabricantesController fc = new FabricantesController();
+            FabricanteController fc = new FabricanteController();
             InserirFabricanteGUI ing = new InserirFabricanteGUI(modelo, linhaSelecionada, codFabricante, this);
             ing.setVisible(true);
 
@@ -140,7 +140,7 @@ public class ListarFabricanteGUI extends javax.swing.JFrame {
             int codFabricante = (int)
             tabela.getValueAt(linhaSelecionada, 0);
             fab.setCod(codFabricante);
-            FabricantesController fc = new FabricantesController();
+            FabricanteController fc = new FabricanteController();
             if (fc.delete(fab)){
 
                 modelo.removeRow(linhaSelecionada);
@@ -153,7 +153,7 @@ public class ListarFabricanteGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btExcluirFabricanteActionPerformed
 
     private void txPesquisarFabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txPesquisarFabricanteActionPerformed
-        FabricantesController fc = new FabricantesController();
+        FabricanteController fc = new FabricanteController();
         modelo.setNumRows(0);
         for (Fabricante fab: fc.pesquisa(txPesquisarFabricante.getText())){
             modelo.addRow(new Object[]{fab.getCod(), fab.getNmFantasia(), fab.getCnpj(), fab.getTelefone(), fab.getEmail()});
@@ -195,7 +195,7 @@ private void criaJTable() {
  * @since 1.0 05/11/2013
  */
 private void preencherJTable() {
-         FabricantesController fc = new FabricantesController();
+         FabricanteController fc = new FabricanteController();
         for (Fabricante fab : fc.listAll()) {
             modelo.addRow(new Object[]{fab.getCod(), fab.getNmFantasia(), fab.getCnpj(), fab.getTelefone(), fab.getEmail()});
         }
