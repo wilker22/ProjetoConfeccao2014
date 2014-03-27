@@ -1,44 +1,48 @@
 package br.senai.sc.controller;
 
 import br.senai.sc.model.negocio.Colecao;
-import br.senai.sc.model.persistencia.ColecaoDaoJDBC;
+import br.senai.sc.model.persistencia.ColecaoDaoJPA;
 import br.senai.sc.model.persistencia.dao.ColecaoDAO;
-import java.sql.SQLException;
 import java.util.List;
 
-/**
- *
- * @author Gabriel Arsênio
- */
 public class ColecaoController {
 
-    public int inserir(Colecao c) {
-        ColecaoDAO dao = new ColecaoDaoJDBC();
-        return dao.insert(c);
+    public Colecao salve(Colecao colecao) {
+        ColecaoDAO dao = new ColecaoDaoJPA();
+
+        return dao.save(colecao);
     }
 
-    public int atualizar(Colecao c) {
-        ColecaoDAO dao = new ColecaoDaoJDBC();
-        return dao.update(c);
-    }
+    public boolean deletar(int codigo) {
+        ColecaoDAO dao = new ColecaoDaoJPA();
 
-    public boolean deletar(int cod) {
-        ColecaoDAO dao = new ColecaoDaoJDBC();
-        return dao.delete(cod);
+        return dao.remove(Colecao.class, codigo);
     }
 
     public List<Colecao> listarTodas() {
-        ColecaoDAO dao = new ColecaoDaoJDBC();
-        return dao.listAll();
+        ColecaoDAO dao = new ColecaoDaoJPA();
+
+        return dao.getAll(Colecao.class);
     }
 
-    public Colecao listarId(int id) {
-        ColecaoDAO dao = new ColecaoDaoJDBC();
-        return dao.listId(id);
+    public Colecao listarColecaoById(int codigo) {
+        ColecaoDAO dao = new ColecaoDaoJPA();
+
+        return dao.getById(Colecao.class, codigo);
     }
 
-    public List<Colecao> listarNome(String nome) {
-        ColecaoDAO dao = new ColecaoDaoJDBC();
-        return dao.listName(nome);
+    public List<Colecao> listEstacao(String estacao) {
+        ColecaoDAO dao = new ColecaoDaoJPA();
+        return dao.listEstacao(estacao);
+    }
+
+    public List<Colecao> pesquisarEstacao(String estacao) {
+        ColecaoDAO dao = new ColecaoDaoJPA();
+        return dao.pesquisarEstacao(estacao);
+    }
+
+    public List<Colecao> pesquisarAno(int ano) {
+        ColecaoDAO dao = new ColecaoDaoJPA();
+        return dao.pesquisarAno(ano);
     }
 }
