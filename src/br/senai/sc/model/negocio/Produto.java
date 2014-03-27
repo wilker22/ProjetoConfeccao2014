@@ -1,17 +1,35 @@
 package br.senai.sc.model.negocio;
 
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
+@Entity
 public class Produto {
 
+    @Id
+    @GeneratedValue
+    
     private int codProduto;
+    @ManyToOne
     private Fabricante fabricante;
     private String modelo;
+    @Column(length = 100)
     private String nome;
     private double preco;
+    @ManyToOne
     private CategoriaProduto categoria;
+    @Column(length = 5)
     private String tamanho;
+    @ManyToOne
     private Colecao colecao;
+    @Column(length = 50)
     private String cor;
     private int qtProdutos;
 
@@ -63,7 +81,7 @@ public class Produto {
     }
 
     public void setCategoria(CategoriaProduto categoria) {
-        this.categoria = categoria;
+        this.categoria = (CategoriaProduto) (List<CategoriaProduto>) categoria;
     }
 
     public String getTamanho() {

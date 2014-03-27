@@ -1,6 +1,8 @@
 package br.senai.sc.model.negocio;
 
 import java.util.Objects;
+import javax.persistence.*;
+
 
 /**
  * Classe Colecao * Representa as informações de cada coleção
@@ -8,13 +10,19 @@ import java.util.Objects;
  * @version v1.0 28/08/2013
  * @author Gabriel Arsênio
  */
+
+@Entity
 public class Colecao {
 
+    @Id
+    @GeneratedValue
     private int codColecao;
     private String estacaoColecao;
     private int anoColecao;
     private String pubAlvoColecao;
+    @ManyToOne
     private Funcionario funResponsavelColecao;
+    @ManyToOne
     private CategoriaColecao categoriaColecao;
 
     public Colecao() {

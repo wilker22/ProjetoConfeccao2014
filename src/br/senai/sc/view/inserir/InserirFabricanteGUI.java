@@ -1,48 +1,47 @@
 package br.senai.sc.view.inserir;
 
-
 import br.senai.sc.model.negocio.Fabricante;
 import br.senai.sc.model.persistencia.FabricanteDaoJDBC;
 import br.senai.sc.model.persistencia.dao.FabricanteDAO;
 import javax.swing.table.DefaultTableModel;
-import br.senai.sc.controller.FabricantesController;
+import br.senai.sc.controller.FabricanteController;
 import br.senai.sc.validador.Validadores;
 import br.senai.sc.view.list.ListarFabricanteGUI;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+
 /**
  *
- * @author Mateus  Generoso
+ * @author Mateus Generoso
  * @version 1.0 30/10/2013
  */
 public class InserirFabricanteGUI extends javax.swing.JFrame {
-    
+
     private ListarFabricanteGUI janela;
     private DefaultTableModel modelo = new DefaultTableModel();
     private int linhaSelecionada;
 
-    
     public InserirFabricanteGUI(DefaultTableModel modelo, ListarFabricanteGUI janela) {
-        
+
         this.janela = janela;
         this.modelo = modelo;
         initComponents();
         setLocationRelativeTo(null);
-        
+
     }
-    
+
     public InserirFabricanteGUI(DefaultTableModel modelo, int linhaSelecionada, int idFabricante, ListarFabricanteGUI janela) {
-        
+
         this.janela = janela;
         this.modelo = modelo;
         this.linhaSelecionada = linhaSelecionada;
         initComponents();
         setLocationRelativeTo(null);
-        
+
         Fabricante listValue = new Fabricante();
-        FabricanteDAO daoListId = new FabricanteDaoJDBC();
-        
-        listValue = daoListId.listById(idFabricante);
+        FabricanteController fc = new FabricanteController();
+
+        listValue = fc.listarId(idFabricante);
         txCodFabricante.setText(String.valueOf(listValue.getCod()));
         txNmFantasia.setText(listValue.getNmFantasia());
         SimpleDateFormat formatDtCad = new SimpleDateFormat("dd/MM/yyyy");
@@ -53,8 +52,8 @@ public class InserirFabricanteGUI extends javax.swing.JFrame {
         txTelefone.setText(listValue.getTelefone());
         txEmail.setText(listValue.getEmail());
         txEndereco.setText(listValue.getEndereco());
-        
-        
+
+
     }
 
     @SuppressWarnings("unchecked")
@@ -238,51 +237,49 @@ public class InserirFabricanteGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-       
-        if(
-                Validadores.somenteNumeros(txCnpj.getText(), "CNPJ") &&
-                Validadores.validaCampoVazio(txCnpj.getText(), "CNPJ") &&
-                Validadores.validaCnpj(txCnpj.getText()) &&
-                Validadores.validaCampoVazio(txDtCadastro.getText(), "Data Cadastro") &&
-                Validadores.validaCampoVazio(txEmail.getText(), "E-mail") &&
-                Validadores.validaCampoVazio(txEndereco.getText(), "Endereço") &&
-                Validadores.validaCampoVazio(txNmFantasia.getText(), "Nome Fantasia") &&
-                Validadores.validaCampoVazio(txRazaoSocial.getText(), "Razão Social") &&
-                Validadores.validaCampoVazio(txTelefone.getText(), "Telefone") &&
-                Validadores.validaEmail(txEmail.getText())
-                ){
-        Fabricante fab = new Fabricante();
-        fab.setNmFantasia(txNmFantasia.getText());
-        fab.setRazaoSocial(txRazaoSocial.getText());
-        
-        try {
-            String data = txDtCadastro.getText();
 
-            fab.setDtCadastro(new SimpleDateFormat("dd/mm/yyyy").parse(data));
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Data incorreta" + ex);
-        }
-        
-        fab.setCnpj(txCnpj.getText());
-        fab.setTelefone(txTelefone.getText());
-        fab.setEmail(txEmail.getText());
-        fab.setEndereco(txEndereco.getText());
-        
-        FabricantesController fc = new FabricantesController();
-        if (!(txCodFabricante.getText().equals("") || txCodFabricante.getText() == null)) {
-            fab.setCod(Integer.parseInt(txCodFabricante.getText()));
+        if (Validadores.somenteNumeros(txCnpj.getText(), "CNPJ")
+                && Validadores.validaCampoVazio(txCnpj.getText(), "CNPJ")
+                && Validadores.validaCnpj(txCnpj.getText())
+                && Validadores.validaCampoVazio(txDtCadastro.getText(), "Data Cadastro")
+                && Validadores.validaCampoVazio(txEmail.getText(), "E-mail")
+                && Validadores.validaCampoVazio(txEndereco.getText(), "Endereço")
+                && Validadores.validaCampoVazio(txNmFantasia.getText(), "Nome Fantasia")
+                && Validadores.validaCampoVazio(txRazaoSocial.getText(), "Razão Social")
+                && Validadores.validaCampoVazio(txTelefone.getText(), "Telefone")
+                && Validadores.validaEmail(txEmail.getText())) {
+            Fabricante fab = new Fabricante();
+            fab.setNmFantasia(txNmFantasia.getText());
+            fab.setRazaoSocial(txRazaoSocial.getText());
 
-            fc.update(fab);
-            modelo.removeRow(linhaSelecionada);
-            modelo.addRow(new Object[]{fab.getCod(), fab.getNmFantasia(), fab.getCnpj(), fab.getTelefone(), fab.getEmail()});
-            
-        } else {
-            
-            modelo.addRow(new Object[]{fc.insert(fab), fab.getNmFantasia(), fab.getCnpj(), fab.getTelefone(), fab.getEmail()});
-            
-        }
-       this.janela.repaint();
-       this.dispose();
+            try {
+                String data = txDtCadastro.getText();
+
+                fab.setDtCadastro(new SimpleDateFormat("dd/mm/yyyy").parse(data));
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Data incorreta" + ex);
+            }
+
+            fab.setCnpj(txCnpj.getText());
+            fab.setTelefone(txTelefone.getText());
+            fab.setEmail(txEmail.getText());
+            fab.setEndereco(txEndereco.getText());
+
+            FabricanteController fc = new FabricanteController();
+            if (!(txCodFabricante.getText().equals("") || txCodFabricante.getText() == null)) {
+                fab.setCod(Integer.parseInt(txCodFabricante.getText()));
+
+                fc.salvar(fab);
+                modelo.removeRow(linhaSelecionada);
+                modelo.addRow(new Object[]{fab.getCod(), fab.getNmFantasia(), fab.getCnpj(), fab.getTelefone(), fab.getEmail()});
+
+            } else {
+
+                modelo.addRow(new Object[]{fc.salvar(fab), fab.getNmFantasia(), fab.getCnpj(), fab.getTelefone(), fab.getEmail()});
+
+            }
+            this.janela.repaint();
+            this.dispose();
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
@@ -295,8 +292,6 @@ public class InserirFabricanteGUI extends javax.swing.JFrame {
         txEmail.setText("");
         txEndereco.setText("");
     }//GEN-LAST:event_btCancelarActionPerformed
-
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btSalvar;

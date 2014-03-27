@@ -11,29 +11,87 @@ import java.util.List;
  * @version 1.0 28/10/2013
  */
 public class FabricanteController {
-    
-    public List<Fabricante> listAll() {
+
+    public Fabricante salvar(Fabricante fabricante) {
         FabricanteDAO dao = new FabricanteDaoJDBC();
-        return dao.listAll();
+        return dao.save(fabricante);
     }
 
-    public int insert(Fabricante fab) {
+    public boolean excluir(int id) {
         FabricanteDAO dao = new FabricanteDaoJDBC();
-        return dao.insert(fab);
+        return dao.remove(Fabricante.class, id);
     }
 
-    public int update(Fabricante fab) {
+    public List<Fabricante> listarTodos() {
         FabricanteDAO dao = new FabricanteDaoJDBC();
-        return dao.update(fab);
+        return dao.getAll(Fabricante.class);
     }
 
-    public boolean delete(Fabricante fab) {
+    public Fabricante listarId(int id) {
         FabricanteDAO dao = new FabricanteDaoJDBC();
-        return dao.delete(fab);
+        return dao.getById(Fabricante.class, id);
     }
-    
-     public List<Fabricante> pesquisa(String texto){
+
+    public List<Fabricante> listarNome(String nome) {
         FabricanteDAO dao = new FabricanteDaoJDBC();
-        return dao.ListPesquisar(texto);
+        return dao.pesquisarNome(nome);
     }
+//    /**
+//     * Método de ligação do método de listagem dos registros com a interface gráfica
+//     * @author Mateus Generoso
+//     * @since 1.0 05/11/2013
+//     * @param f
+//     * @return 
+//     */
+//    public List<Fabricante> listAll() {
+//        FabricanteDAO dao = new FabricanteDaoJDBC();
+//        return dao.listAll();
+//    }
+//    
+//    /**
+//     * Método de ligação do método de inserção com a interface gráfica
+//     * @author Mateus Generoso
+//     * @since 1.0 05/11/2013
+//     * @param fab
+//     * @return 
+//     */
+//
+//    public int insert(Fabricante fab) {
+//        FabricanteDAO dao = new FabricanteDaoJDBC();
+//        return dao.insert(fab);
+//    }
+//    
+//    /**
+//     * Método de ligação do método de atualização com a interface gráfica
+//     * @author Mateus Generoso
+//     * @since 1.0 05/11/2013
+//     * @param fab
+//     * @return 
+//     */
+//    public int update(Fabricante fab) {
+//        FabricanteDAO dao = new FabricanteDaoJDBC();
+//        return dao.update(fab);
+//    }
+//    /**
+//     * Método de ligação do método de deleção com a interface gráfica
+//     * @author Mateus Generoso
+//     * @since 1.0 05/11/2013
+//     * @param fab
+//     * @return 
+//     */
+//    public boolean delete(Fabricante fab) {
+//        FabricanteDAO dao = new FabricanteDaoJDBC();
+//        return dao.delete(fab);
+//    }
+//    /**
+//     * Método de ligação do método de pesquisa com a interface gráfica
+//     * @author Mateus Generoso
+//     * @since 1.0 05/11/2013
+//     * @param texto
+//     * @return 
+//     */
+//     public List<Fabricante> pesquisa(String texto){
+//        FabricanteDAO dao = new FabricanteDaoJDBC();
+//        return dao.ListPesquisar(texto);
+//    }
 }
