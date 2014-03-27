@@ -1,7 +1,7 @@
 package br.senai.sc.controller;
 
 import br.senai.sc.model.negocio.Fabricante;
-import br.senai.sc.model.persistencia.FabricanteDaoJDBC;
+import br.senai.sc.model.persistencia.FabricanteDAOJPA;
 import br.senai.sc.model.persistencia.dao.FabricanteDAO;
 import java.util.List;
 
@@ -13,27 +13,27 @@ import java.util.List;
 public class FabricanteController {
 
     public Fabricante salvar(Fabricante fabricante) {
-        FabricanteDAO dao = new FabricanteDaoJDBC();
+        FabricanteDAO dao = new FabricanteDAOJPA();
         return dao.save(fabricante);
     }
 
     public boolean excluir(int id) {
-        FabricanteDAO dao = new FabricanteDaoJDBC();
+        FabricanteDAO dao = new FabricanteDAOJPA();
         return dao.remove(Fabricante.class, id);
     }
 
     public List<Fabricante> listarTodos() {
-        FabricanteDAO dao = new FabricanteDaoJDBC();
+        FabricanteDAO dao = new FabricanteDAOJPA();
         return dao.getAll(Fabricante.class);
     }
 
     public Fabricante listarId(int id) {
-        FabricanteDAO dao = new FabricanteDaoJDBC();
+        FabricanteDAO dao = new FabricanteDAOJPA();
         return dao.getById(Fabricante.class, id);
     }
 
     public List<Fabricante> listarNome(String nome) {
-        FabricanteDAO dao = new FabricanteDaoJDBC();
+        FabricanteDAO dao = new FabricanteDAOJPA();
         return dao.pesquisarNome(nome);
     }
 //    /**
@@ -44,7 +44,7 @@ public class FabricanteController {
 //     * @return 
 //     */
 //    public List<Fabricante> listAll() {
-//        FabricanteDAO dao = new FabricanteDaoJDBC();
+//        FabricanteDAO dao = new FabricanteDAOJPA();
 //        return dao.listAll();
 //    }
 //    
@@ -57,7 +57,7 @@ public class FabricanteController {
 //     */
 //
 //    public int insert(Fabricante fab) {
-//        FabricanteDAO dao = new FabricanteDaoJDBC();
+//        FabricanteDAO dao = new FabricanteDAOJPA();
 //        return dao.insert(fab);
 //    }
 //    
@@ -69,7 +69,7 @@ public class FabricanteController {
 //     * @return 
 //     */
 //    public int update(Fabricante fab) {
-//        FabricanteDAO dao = new FabricanteDaoJDBC();
+//        FabricanteDAO dao = new FabricanteDAOJPA();
 //        return dao.update(fab);
 //    }
 //    /**
@@ -80,7 +80,7 @@ public class FabricanteController {
 //     * @return 
 //     */
 //    public boolean delete(Fabricante fab) {
-//        FabricanteDAO dao = new FabricanteDaoJDBC();
+//        FabricanteDAO dao = new FabricanteDAOJPA();
 //        return dao.delete(fab);
 //    }
 //    /**
@@ -91,7 +91,7 @@ public class FabricanteController {
 //     * @return 
 //     */
 //     public List<Fabricante> pesquisa(String texto){
-//        FabricanteDAO dao = new FabricanteDaoJDBC();
+//        FabricanteDAO dao = new FabricanteDAOJPA();
 //        return dao.ListPesquisar(texto);
 //    }
 }

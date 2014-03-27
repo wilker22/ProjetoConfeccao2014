@@ -1,7 +1,7 @@
 package br.senai.sc.view.inserir;
 
 import br.senai.sc.model.negocio.Fabricante;
-import br.senai.sc.model.persistencia.FabricanteDaoJDBC;
+import br.senai.sc.model.persistencia.FabricanteDAOJPA;
 import br.senai.sc.model.persistencia.dao.FabricanteDAO;
 import javax.swing.table.DefaultTableModel;
 import br.senai.sc.controller.FabricanteController;
