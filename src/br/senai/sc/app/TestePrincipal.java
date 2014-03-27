@@ -17,7 +17,7 @@ public class TestePrincipal {
         
         Teste t = new Teste();
         
-        t.setNome("tt");
+        t.setNome("ttuu");
         
         TesteController tc = new TesteController();
         tc.salvar(t);
