@@ -5,7 +5,12 @@
 package br.senai.sc.app;
 
 import br.senai.sc.controller.TesteController;
+import br.senai.sc.controller.UsuarioController;
 import br.senai.sc.model.negocio.Teste;
+import br.senai.sc.model.negocio.Usuario;
+import javax.persistence.Entity;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -15,12 +20,13 @@ public class TestePrincipal {
     
     public static void main(String[] args) {
         
-        Teste t = new Teste();
+       
+        Usuario u = new Usuario();
         
-        t.setNome("ttuu");
+        u.setNome("Teste");
         
-        TesteController tc = new TesteController();
-        tc.salvar(t);
+        UsuarioController uc = new UsuarioController();
+        uc.insert(u);
         
         
     }
