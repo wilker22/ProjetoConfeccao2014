@@ -1,6 +1,10 @@
 package br.senai.sc.model.negocio;
 
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
 
 /**
  * Esta classe representa as categorias das materias-prima utilizadas.
@@ -8,11 +12,14 @@ import java.util.Objects;
  * @version v1.0 28/08/2013
  * @author leticia_jesus
  */
+@Entity
 public class CategoriaMateriaPrima {
-    //declaração das variáveis
-
+    //declaraĂ§ĂŁo das variĂˇveis
+    @Id
+    @GeneratedValue
     private int cod;
     private String nome;
+    @Lob
     private String descricao;
 
     //construtor
@@ -43,7 +50,7 @@ public class CategoriaMateriaPrima {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    //para mostrar os atributos da categoria matéria-prima
+    //para mostrar os atributos da categoria matĂ©ria-prima
 
     @Override
     public String toString() {
@@ -58,7 +65,7 @@ public class CategoriaMateriaPrima {
         return hash;
     }
 
-    //equals:faz comparações se é só números ou letras
+    //equals:faz comparaĂ§Ăµes se Ă© sĂł nĂşmeros ou letras
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
