@@ -6,19 +6,23 @@ package br.senai.sc.model.negocio;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.*;
 
 /**
  * Pessoa Física
  * @author mateus_aguiar
- * @version v1.0 28/08/2013
+ * @version v2.0 27/03/2014
  */
+
+@Entity
 public class PessoaFisica extends Pessoa {
     
     // Atributos
     private String cpf;
 
     private String nome;
-
+    
+    @Temporal(TemporalType.DATE)
     private Date dtNascimento;
     private String rg;
     

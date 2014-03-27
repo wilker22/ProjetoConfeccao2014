@@ -5,12 +5,15 @@
 package br.senai.sc.model.negocio;
 
 import java.util.Objects;
+import javax.persistence.Entity;
 
 /**
  *
  * @author mateus_aguiar
- * @version v1.0 28/08/2013
+ * @version v2.0 27/03/2014
  */
+
+@Entity
 public class PessoaJuridica extends Pessoa {
     
     //Atributos
