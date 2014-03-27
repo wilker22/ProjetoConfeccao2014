@@ -14,7 +14,7 @@ import javax.persistence.*;
  * @version v2.0 27/03/2014
  */
 
-@Entity
+@MappedSuperclass
 public class PessoaFisica extends Pessoa {
     
     // Atributos
