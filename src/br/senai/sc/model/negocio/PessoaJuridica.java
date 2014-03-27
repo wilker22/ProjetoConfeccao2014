@@ -6,6 +6,7 @@ package br.senai.sc.model.negocio;
 
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
 
 /**
  *
@@ -13,7 +14,7 @@ import javax.persistence.Entity;
  * @version v2.0 27/03/2014
  */
 
-@Entity
+@MappedSuperclass
 public class PessoaJuridica extends Pessoa {
     
     //Atributos

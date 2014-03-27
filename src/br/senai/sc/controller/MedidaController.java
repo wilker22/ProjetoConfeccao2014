@@ -1,11 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senai.sc.controller;
-
 import br.senai.sc.model.negocio.Medida;
-import br.senai.sc.model.persistencia.MedidaDaoJDBC;
+import br.senai.sc.model.persistencia.MedidaDaoJPA;
 import br.senai.sc.model.persistencia.dao.MedidaDAO;
 import java.util.List;
 
@@ -15,21 +10,10 @@ import java.util.List;
  */
 public class MedidaController {
 
-    /**
-     * Método que serve para realizar a ligação entre o método listAll da base
-     * de dados e a interface gráfica.
-     *
-     * @author Gustavo L. Alves
-     * @since 1.0 05/11/2013
-     * @return
-     */
-    public List<Medida> listAll() {
-        MedidaDAO dao = new MedidaDaoJDBC();
-        return dao.listall();
-    }
+
 
     /**
-     * Método que serve para realizar a ligação entre o método inserir da base
+     * Método que serve para realizar a ligação entre o método salvar da base
      * de dados e a interface gráfica.
      *
      * @author Gustavo L. Alves
@@ -37,10 +21,15 @@ public class MedidaController {
      * @param m
      * @return
      */
-    public int inserir(Medida m) {
-        MedidaDAO dao = new MedidaDaoJDBC();
-        return dao.insert(m);
+    
+     public Medida salvar(Medida medida) {
+        MedidaDAO dao = new MedidaDaoJPA();
+        return dao.save(medida);
     }
+     
+     
+     
+     
 
     /**
      * Método que serve para realizar a ligação entre o método delete da base de
@@ -51,40 +40,38 @@ public class MedidaController {
      * @param id
      * @return
      */
-    public boolean delete(int id) {
-        MedidaDAO dao = new MedidaDaoJDBC();
-        return dao.delete(id);
+     
+         public boolean excluir(int codigo) {
+        MedidaDAO dao = new MedidaDaoJPA();
+        return dao.remove(Medida.class, codigo);
     }
 
-    /**
-     * Método que serve para realizar a ligação entre o método pesquisar da base
-     * de dados e a interface gráfica.
-     *
-     * @author Gustavo L. Alves
-     * @since 1.0 05/11/2013
-     * @param texto
-     * @return
-     */
-    public List<Medida> pesquisar(String texto) {
-        MedidaDAO dao = new MedidaDaoJDBC();
-        return dao.ListPesquisa(texto);
-    }
+         
+         
+         
+         
+
 
     /**
-     * Método que serve para realizar a ligação entre o método update da base de
+     * Método que serve para realizar a ligação entre o método listar da base de
      * dados e a interface gráfica.
      *
      * @author Gustavo L. Alves
      * @since 1.0 05/11/2013
-     * @param m
+     * @param id
      * @return
      */
-    public boolean update(Medida m) {
-        MedidaDAO dao = new MedidaDaoJDBC();
-        return dao.update(m);
+         
+         public List<Medida> listarMedida(){
+        MedidaDAO dao = new MedidaDaoJPA();
+        return dao.getAll(Medida.class);
     }
-
-    /**
+         
+         
+         
+         
+         
+     /**
      * Método que serve para realizar a ligação entre o método listId da base de
      * dados e a interface gráfica.
      *
@@ -93,8 +80,31 @@ public class MedidaController {
      * @param id
      * @return
      */
-    public Medida listId(int id) {
-        MedidaDAO dao = new MedidaDaoJDBC();
-        return dao.listById(id);
+         
+        public Medida listarMedidaById(int codigo){
+        MedidaDAO dao = new MedidaDaoJPA();
+        return dao.getById(Medida.class, codigo);
+    }    
+         
+        
+        
+        
+        
+        
+     /**
+     * Método que serve para realizar a ligação entre o método pesquisar da base de
+     * dados e a interface gráfica.
+     *
+     * @author Gustavo L. Alves
+     * @since 1.0 05/11/2013
+     * @param id
+     * @return
+     */ 
+        
+        public List<Medida> pesquisarNome(String nome){
+        MedidaDAO dao = new MedidaDaoJPA();
+        return dao.pesquisarNome(nome);
     }
-}
+   
+    }
+

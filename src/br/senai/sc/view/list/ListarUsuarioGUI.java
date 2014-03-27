@@ -139,7 +139,7 @@ public class ListarUsuarioGUI extends javax.swing.JFrame {
         if (linhaSelecionada >= 0) {
             int idUsuario = (int) tabela.getValueAt(linhaSelecionada, 0);
             UsuarioController uc = new UsuarioController();
-            InserirUsuarioGUI iug = new InserirUsuarioGUI(modelo);
+            InserirUsuarioGUI iug = new InserirUsuarioGUI(modelo, linhaSelecionada, idUsuario);
             iug.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "É necessário selecionar uma linha");

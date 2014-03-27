@@ -45,7 +45,7 @@ public class InserirTipoFisicoGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         TipoFisicoController tfc = new TipoFisicoController();
-        TipoFisico tf = tfc.listId(idTipoFisico);
+        TipoFisico tf = tfc.listarTipoFisicoById(idTipoFisico);
 
         txId.setText(String.valueOf(tf.getCodigo()));
         txNome.setText(tf.getNome());
@@ -198,16 +198,14 @@ public class InserirTipoFisicoGUI extends javax.swing.JFrame {
 
             TipoFisicoController tfc = new TipoFisicoController();
             if (txId.getText().equals("")) {
-                int id = tfc.inserir(tf);
+                int id = tfc.salvar(tf).getCodigo();
                 modelo.addRow(new Object[]{id, tf.getNome(), tf.getGenero(), tf.getDescicao()});
                 dispose();
             } else {
                 tf.setCodigo(Integer.parseInt(txId.getText()));
-                boolean estado = tfc.update(tf);
-                if (estado) {
-                    modelo.removeRow(linhaSelecionada);
-                    modelo.addRow(new Object[]{tf.getCodigo(), tf.getNome(), tf.getGenero(), tf.getDescicao()});
-                }
+                int estado = tfc.salvar(tf).getCodigo();
+                modelo.removeRow(linhaSelecionada);
+                modelo.addRow(new Object[]{tf.getCodigo(), tf.getNome(), tf.getGenero(), tf.getDescicao()});
             }
             dispose();
         }

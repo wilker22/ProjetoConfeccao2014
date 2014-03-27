@@ -7,14 +7,10 @@ import br.senai.sc.model.negocio.CategoriaColecao;
 import br.senai.sc.model.negocio.Colecao;
 import br.senai.sc.model.negocio.Funcionario;
 import br.senai.sc.validador.Validadores;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -85,7 +81,7 @@ public class InserirColecaoGUI extends javax.swing.JFrame {
         carregarComboCategoria();
         carregarComboFuncionario();
         ColecaoController cc = new ColecaoController();
-        Colecao c = cc.listarId(idColecao);
+        Colecao c = cc.listarColecaoById(idColecao);
         txCodigo.setText(String.valueOf(c.getCodColecao()));
         txEstacao.setText(c.getEstacaoColecao());
         txAno.setText(String.valueOf(c.getAnoColecao()));
@@ -284,13 +280,13 @@ public class InserirColecaoGUI extends javax.swing.JFrame {
         ColecaoController cc = new ColecaoController();
         if (camposCorretos == true) {
             if (c.getCodColecao() == 0) {
-                int id = cc.inserir(c);
+                int id = cc.salve(c).getCodColecao();
                 if (id > 0) {
                     System.out.println("Cadastrado com sucesso.");
                 }
             } else {
 
-                int id = cc.atualizar(c);
+                int id = cc.salve(c).getCodColecao();
                 if (id > 0) {
                     System.out.println("Atualizado com sucesso.");
                     modelo.removeRow(linhaSelecionada);

@@ -1,50 +1,29 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senai.sc.controller;
 
 import br.senai.sc.model.negocio.Curriculo;
-import br.senai.sc.model.persistencia.CurriculoDAOJDBC;
+import br.senai.sc.model.persistencia.CurriculoDAOJPA;
 import br.senai.sc.model.persistencia.dao.CurriculoDAO;
 import java.util.List;
 
-
-
-
-/**
- *
- * @author evaldo_matias
- */
 public class CurriculoController {
 
-    public int insert(Curriculo ff) {
-        CurriculoDAO dao = new CurriculoDAOJDBC();
-        return dao.insert(ff);
+    public Curriculo salvar(Curriculo curriculo) {
+        CurriculoDAO dao = new CurriculoDAOJPA();
+        return dao.save(curriculo);
     }
 
-    public List<Curriculo> listarTodos() {
-        CurriculoDAO dao = new CurriculoDAOJDBC();
-        return dao.listAll();
+    public boolean excluir(int codigo) {
+        CurriculoDAO dao = new CurriculoDAOJPA();
+        return dao.remove(Curriculo.class, codigo);
     }
 
-    public boolean remove(int id) {
-        CurriculoDAO dao = new CurriculoDAOJDBC();
-        return dao.remove(id);
+    public List<Curriculo> listarCurriculos() {
+        CurriculoDAO dao = new CurriculoDAOJPA();
+        return dao.getAll(Curriculo.class);
     }
 
-    public int update(Curriculo f) {
-        CurriculoDAO dao = new CurriculoDAOJDBC();
-        return dao.update(f);
-    }
-
-    public Curriculo listById(int id) {
-        CurriculoDAO dao = new CurriculoDAOJDBC();
-        return dao.listById(id);
-    }
-
-    public List<Curriculo> pesquisar(String texto) {
-        CurriculoDAO dao = new CurriculoDAOJDBC();
-        return dao.Pesquisa(texto);
+    public Curriculo listarCurriculoById(int codigo) {
+        CurriculoDAO dao = new CurriculoDAOJPA();
+        return dao.getById(Curriculo.class, codigo);
     }
 }

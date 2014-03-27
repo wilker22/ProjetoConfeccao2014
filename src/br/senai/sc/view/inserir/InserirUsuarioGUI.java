@@ -27,8 +27,7 @@ public class InserirUsuarioGUI extends javax.swing.JFrame {
         initComponents();
     }
 
-    public InserirUsuarioGUI(DefaultTableModel modelo, int linhaSelecionada,
-            int idUsuario) {
+    public InserirUsuarioGUI(DefaultTableModel modelo, int linhaSelecionada, int idUsuario) {
         initComponents();
         this.modelo = modelo;
         this.linhaSelecionada = linhaSelecionada;
@@ -39,8 +38,8 @@ public class InserirUsuarioGUI extends javax.swing.JFrame {
         String data = formataData.format(u.getDtNascimento());
         txDtNascimento.setText(data);
         txCpf.setText(u.getCpf());
-//        txRg.setText(u.getRg());
- //       txEndereco.setText(u.getEndereco());
+        txRg.setText(u.getRg());
+        txEndereco.setText(u.getEndereco());
         txTelefone.setText(u.getTelefone());
         txDtNascimento.setText(data);
         txLogin.setText(u.getLogin());

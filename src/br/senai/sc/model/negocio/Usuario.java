@@ -2,6 +2,7 @@ package br.senai.sc.model.negocio;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Entity;
 
 /*
  * Classe Usuário
@@ -11,11 +12,13 @@ import java.util.Objects;
  *
  */
 // USUARIO codigo login senha nome cpf email telefone endereco dataNascimento
+
+@Entity
 public class Usuario extends PessoaFisica {
 
 	private String login;
 	private String senha;
-	private String nome;
+	private String nomeFuncionario;
 	private String email;
 
 
@@ -41,11 +44,11 @@ public class Usuario extends PessoaFisica {
 	}
 
 	public String getNome() {
-    	return nome;
+    	return nomeFuncionario;
 	}
 
 	public void setNome(String nome) {
-    	this.nome = nome;
+    	this.nomeFuncionario = nome;
 	}
 
 	public String getEmail() {
@@ -60,7 +63,7 @@ public class Usuario extends PessoaFisica {
 
 	//toString
 	public String toString() {
-    	return nome;
+    	return nomeFuncionario;
             	
 	}
 
@@ -87,7 +90,7 @@ public class Usuario extends PessoaFisica {
     	if (!Objects.equals(this.senha, other.senha)) {
         	return false;
     	}
-    	if (!Objects.equals(this.nome, other.nome)) {
+    	if (!Objects.equals(this.nomeFuncionario, other.nomeFuncionario)) {
         	return false;
     	}
     	

@@ -1,14 +1,8 @@
 package br.senai.sc.view.list;
 
-import br.senai.sc.controller.CategoriaColecaoController;
 import br.senai.sc.controller.ColecaoController;
-import br.senai.sc.model.negocio.CategoriaColecao;
 import br.senai.sc.model.negocio.Colecao;
-import br.senai.sc.view.inserir.InserirCategoriaColecaoGUI;
 import br.senai.sc.view.inserir.InserirColecaoGUI;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -211,10 +205,10 @@ public class ListarColecaoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void txPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txPesquisaActionPerformed
-        String nome = txPesquisa.getText();
+        String estacao = txPesquisa.getText();
         modelo.setNumRows(0);
         ColecaoController ccc = new ColecaoController();
-        for (Colecao c : ccc.listarNome(nome)) {
+        for (Colecao c : ccc.listEstacao(estacao)) {
             modelo.addRow(new Object[]{c.getCodColecao(), c.getEstacaoColecao(), c.getAnoColecao()});
         }
     }//GEN-LAST:event_txPesquisaActionPerformed
