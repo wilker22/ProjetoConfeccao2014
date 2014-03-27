@@ -1,11 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senai.sc.controller;
 
 import br.senai.sc.model.negocio.Usuario;
-import br.senai.sc.model.persistencia.UsuarioDaoJDBC;
+import br.senai.sc.model.persistencia.UsuarioDAOJPA;
 import br.senai.sc.model.persistencia.dao.UsuarioDAO;
 import java.util.List;
 
@@ -16,32 +12,32 @@ import java.util.List;
 public class UsuarioController {
 
     public List<Usuario> listAll() {
-        UsuarioDAO dao = new UsuarioDaoJDBC();
-        return dao.listAll();
+        UsuarioDAO dao = new UsuarioDAOJPA();
+        return dao.getAll(Usuario.class);
     }
 
-    public boolean insert(Usuario u) {
-        UsuarioDAO dao = new UsuarioDaoJDBC();
-        return dao.insert(u);
+    public Usuario insert(Usuario u) {
+        UsuarioDAO dao = new UsuarioDAOJPA();
+        return dao.save(u);
     }
 
-    public boolean update(Usuario u) {
-        UsuarioDAO dao = new UsuarioDaoJDBC();
-        return dao.update(u);
+    public Usuario update(Usuario u) {
+        UsuarioDAO dao = new UsuarioDAOJPA();
+        return dao.save(u);
     }
 
     public boolean delete(int codUsuario) {
-        UsuarioDAO dao = new UsuarioDaoJDBC();
-        return dao.delete(codUsuario);
+        UsuarioDAO dao = new UsuarioDAOJPA();
+        return dao.remove(Usuario.class, codUsuario);
     }
 
     public Usuario listById(int id) {
-        UsuarioDAO dao = new UsuarioDaoJDBC();
-        return dao.listById(id);
+        UsuarioDAO dao = new UsuarioDAOJPA();
+        return dao.getById(Usuario.class, id);
     }
 
     public List<Usuario> pesquisar(String texto) {
-        UsuarioDAO dao = new UsuarioDaoJDBC();
+        UsuarioDAO dao = new UsuarioDAOJPA();
         return dao.listPesquisa(texto);
     }
 }
