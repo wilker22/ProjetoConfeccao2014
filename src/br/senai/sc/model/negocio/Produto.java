@@ -7,15 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Produto {
 
     @Id
     @GeneratedValue
-    
     private int codProduto;
     @ManyToOne
     private Fabricante fabricante;
