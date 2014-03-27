@@ -15,10 +15,6 @@ public class Medida {
 
   //  @Id @GeneratedValue
     private int codigo;
-    
-
-//    @OneToMany
-//    private Usuario usuario ;
 
  //   @OneToMany
     private Usuario usuario ;
