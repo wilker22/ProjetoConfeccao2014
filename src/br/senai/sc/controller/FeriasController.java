@@ -5,7 +5,7 @@
 package br.senai.sc.controller;
 
 import br.senai.sc.model.negocio.Ferias;
-import br.senai.sc.model.persistencia.FeriasDaoJDBC;
+import br.senai.sc.model.persistencia.FeriasDaoJPA;
 import br.senai.sc.model.persistencia.dao.FeriasDAO;
 import java.util.List;
 
@@ -15,28 +15,29 @@ import java.util.List;
  */
 public class FeriasController {
 
-    public List<Ferias> listAll() {
-        FeriasDAO dao = new FeriasDaoJDBC();
-        return dao.listAll();
+       public Ferias salvar(Ferias ferias) {
+        FeriasDAO dao = new FeriasDaoJPA();
+        return dao.save(ferias);
     }
 
-    public boolean insert(Ferias f) {
-        FeriasDAO dao = new FeriasDaoJDBC();
-        return dao.insert(f);
+    public boolean excluir(int codigo) {
+        FeriasDAO dao = new FeriasDaoJPA();
+        return dao.remove(Ferias.class, codigo);
     }
 
-    public boolean update(Ferias f) {
-        FeriasDAO dao = new FeriasDaoJDBC();
-        return dao.update(f);
+    public List<Ferias> listarFerias() {
+        FeriasDAO dao = new FeriasDaoJPA();
+        return dao.getAll(Ferias.class);
     }
 
-    public boolean delete(int codUsuario) {
-        FeriasDAO dao = new FeriasDaoJDBC();
-        return dao.delete(codUsuario);
+    public Ferias listarFeriasById(int codigo) {
+        FeriasDAO dao = new FeriasDaoJPA();
+        return dao.getById(Ferias.class, codigo);
     }
-
-    public Ferias listById(int id) {
-        FeriasDAO dao = new FeriasDaoJDBC();
-        return dao.listById(id);
+    
+    public List<Ferias> pesquisarNome(String nome){
+        FeriasDAO dao = new FeriasDaoJPA();
+        return dao.pesquisarNome(nome);
+        
     }
 }

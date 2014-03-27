@@ -6,6 +6,10 @@ package br.senai.sc.model.negocio;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /*
  * Classe Usuário
@@ -13,24 +17,25 @@ import java.util.Objects;
  * @author Larissa Mezari
  */
 
-
+@Entity
 public class Ferias {
 
     public static void add(Ferias f) {
         
     }
-
+    @Id
+    @GeneratedValue
     private Funcionario funcionario;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataInicio;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataFim;
 
     //Construtor padrão
     public Ferias() {
     }
     
-    //getters e setters
-    
-    
+    //getters e setters   
     
 
     public Funcionario getFuncionario() {

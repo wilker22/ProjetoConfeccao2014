@@ -2,6 +2,8 @@
 package br.senai.sc.model.negocio;
 
 import java.util.Objects;
+import javax.persistence.*;
+
 
      /**
      * Classe responsavél por guardar os métodos
@@ -12,15 +14,17 @@ import java.util.Objects;
      * @param treina
      * @return 
      */
-
+@Entity
 public class Treinamento {
-    
+
     //Variaveis declaradas
+    @Id
+    @GeneratedValue
+    private int id;
     
-    public int id;
-    public String nome;
-    public int cargaHoraria;
-    public String conteudo;
+    private String nome;
+    private int cargaHoraria;
+    private String conteudo;
     
 
     public String getNome() {
