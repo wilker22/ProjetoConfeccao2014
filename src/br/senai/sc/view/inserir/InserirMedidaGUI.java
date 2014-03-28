@@ -1,6 +1,8 @@
 package br.senai.sc.view.inserir;
 import br.senai.sc.controller.MedidaController;
+import br.senai.sc.controller.UsuarioController;
 import br.senai.sc.model.negocio.Medida;
+import br.senai.sc.model.negocio.Usuario;
 import br.senai.sc.validador.Validadores;
 import java.util.ArrayList;
 import java.util.List;
@@ -220,7 +222,7 @@ public class InserirMedidaGUI extends javax.swing.JFrame {
 
             Medida m = new Medida();
 
-        //  m.setUsuario((Usuario) cbNome.getSelectedItem());
+            m.setUsuario((Usuario) cbNome.getSelectedItem());
             m.setAltura(Double.parseDouble(txAltura.getText()));
             m.setMdCintura(Double.parseDouble(txMdCintura.getText()));
             m.setMdBusto(Double.parseDouble(txMdBusto.getText()));
@@ -235,35 +237,26 @@ public class InserirMedidaGUI extends javax.swing.JFrame {
         m.getMdOmbros(), m.getMdQuadril()});
         dispose();
         }
-            
-            
-            
-//            //
-//            if (txId.getText().equals("")) {
-//                int id = mc.salvar(med);
-//        //        modelo.addRow(new Object[]{id, m.getUsuario().getNome(), m.getAltura(), m.getMdCintura(), m.getMdQuadril(), m.getMdOmbros(), m.getMdBusto()});
-//                dispose();
-//                
-//                
-//            } else {
-//                m.setCodigo(Integer.parseInt(txId.getText()));
-//                boolean estado = mc.update(med);
-//                if (estado) {
-//                    modelo.removeRow(linhaSelecionada);
-//          //          modelo.addRow(new Object[]{m.getCodigo(), m.getUsuario().getNome(), m.getAltura(), m.getMdCintura(), m.getMdQuadril(), m.getMdOmbros(), m.getMdBusto()});
-//                }
-//            }
-//            dispose();
+
        }
     }//GEN-LAST:event_btSalvarActionPerformed
 
+    
+    
+    
+    
+    
+    
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         txAltura.setText("");
-        txMdBusto.setText("");
         txMdCintura.setText("");
+        txMdBusto.setText("");
         txMdOmbros.setText("");
         txMdQuadril.setText("");
 
+        
+        
+        
     }//GEN-LAST:event_btLimparActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLimpar;
@@ -285,6 +278,9 @@ public class InserirMedidaGUI extends javax.swing.JFrame {
     private javax.swing.JTextField txMdQuadril;
     // End of variables declaration//GEN-END:variables
 
+    
+    
+    
     /**
      * Método responsável por carregar dados da tabela usuario.
      *
@@ -295,13 +291,14 @@ public class InserirMedidaGUI extends javax.swing.JFrame {
 
         DefaultComboBoxModel comboModel = (DefaultComboBoxModel) cbNome.getModel();
         comboModel.removeAllElements();
-        //List<Usuario> usuarios = new ArrayList<>();
-        //UsuarioController uc = new UsuarioController();
-       // usuarios = uc.listAll();
+        List<Usuario> usuarios = new ArrayList<>();
+        UsuarioController uc = new UsuarioController();
+        usuarios = uc.listAll();
 
-        //for (int linha = 0; linha < usuarios.size(); linha++) {
-            //Usuario u = usuarios.get(linha);
-         //   comboModel.addElement(u);
+        for (int linha = 0; linha < usuarios.size(); linha++) {
+            Usuario u = usuarios.get(linha);
+            comboModel.addElement(u);
         }
     }
 
+}
