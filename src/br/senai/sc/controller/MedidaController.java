@@ -1,6 +1,6 @@
 package br.senai.sc.controller;
 import br.senai.sc.model.negocio.Medida;
-import br.senai.sc.model.persistencia.MedidaDaoJPA;
+import br.senai.sc.model.persistencia.MedidaDAOJPA;
 import br.senai.sc.model.persistencia.dao.MedidaDAO;
 import java.util.List;
 
@@ -9,10 +9,8 @@ import java.util.List;
  * @version 1.0 05/11/2013
  */
 public class MedidaController {
-
-
-
-    /**
+    
+/**
      * Método que serve para realizar a ligação entre o método salvar da base
      * de dados e a interface gráfica.
      *
@@ -23,7 +21,7 @@ public class MedidaController {
      */
     
      public Medida salvar(Medida medida) {
-        MedidaDAO dao = new MedidaDaoJPA();
+        MedidaDAO dao = new MedidaDAOJPA();
         return dao.save(medida);
     }
      
@@ -42,7 +40,7 @@ public class MedidaController {
      */
      
          public boolean excluir(int codigo) {
-        MedidaDAO dao = new MedidaDaoJPA();
+        MedidaDAO dao = new MedidaDAOJPA();
         return dao.remove(Medida.class, codigo);
     }
 
@@ -63,7 +61,7 @@ public class MedidaController {
      */
          
          public List<Medida> listarMedida(){
-        MedidaDAO dao = new MedidaDaoJPA();
+        MedidaDAO dao = new MedidaDAOJPA();
         return dao.getAll(Medida.class);
     }
          
@@ -82,7 +80,7 @@ public class MedidaController {
      */
          
         public Medida listarMedidaById(int codigo){
-        MedidaDAO dao = new MedidaDaoJPA();
+        MedidaDAO dao = new MedidaDAOJPA();
         return dao.getById(Medida.class, codigo);
     }    
          
@@ -102,9 +100,8 @@ public class MedidaController {
      */ 
         
         public List<Medida> pesquisarNome(String nome){
-        MedidaDAO dao = new MedidaDaoJPA();
+        MedidaDAO dao = new MedidaDAOJPA();
         return dao.pesquisarNome(nome);
     }
    
     }
-

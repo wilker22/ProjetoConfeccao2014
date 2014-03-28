@@ -268,7 +268,7 @@ public class ListarMedidaGUI extends javax.swing.JFrame {
         
         MedidaController mc = new MedidaController();
         for (Medida m : mc.listarMedida()){
-            modelo.addRow(new Object[]{m.getCodigo(), m.getAltura(), m.getMdBusto(), m.getMdCintura(),
+            modelo.addRow(new Object[]{m.getCodigo(), m.getUsuario(), m.getAltura(), m.getMdBusto(), m.getMdCintura(),
             m.getMdOmbros(), m.getMdQuadril()});
        
        }
