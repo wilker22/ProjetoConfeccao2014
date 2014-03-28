@@ -158,7 +158,7 @@ public class ListarTransportadoraGUI extends javax.swing.JFrame {
 
     //--------------------------------------------------------------------------
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
-        InserirTransportadoraGUI itg = new InserirTransportadoraGUI(modelo);
+         InserirTransportadoraGUI itg = new InserirTransportadoraGUI(modelo);
 
         itg.setLocationRelativeTo(null);
         itg.setVisible(true);
@@ -166,7 +166,7 @@ public class ListarTransportadoraGUI extends javax.swing.JFrame {
 
     //--------------------------------------------------------------------------
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        int linhaSelecionada = -1;
+         int linhaSelecionada = -1;
         linhaSelecionada = tabela.getSelectedRow();
         if (linhaSelecionada >= 0) {
             int idFuncao = (int) tabela.getValueAt(linhaSelecionada, 0);
@@ -198,7 +198,7 @@ public class ListarTransportadoraGUI extends javax.swing.JFrame {
 
     //--------------------------------------------------------------------------
     private void txPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txPesquisaActionPerformed
-        TransportadoraController fc = new TransportadoraController();
+       TransportadoraController fc = new TransportadoraController();
         modelo.setNumRows(0);
         for (Transportadora t : fc.pesquisar(txPesquisa.getText())) {
             modelo.addRow(new Object[]{t.getCod(), t.getNmFantasia()});
@@ -265,7 +265,7 @@ public class ListarTransportadoraGUI extends javax.swing.JFrame {
      * @author Wesley Batista
      * @since 1.0 05/11/2013
      */
-    private void criaJTable() {
+     private void criaJTable() {
         tabela = new JTable(modelo);
         modelo.addColumn("Id");
         modelo.addColumn("Nome Fantasia");

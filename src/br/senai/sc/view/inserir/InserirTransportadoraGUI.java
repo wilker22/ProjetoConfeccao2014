@@ -259,7 +259,7 @@ public class InserirTransportadoraGUI extends javax.swing.JFrame {
 
     //--------------------------------------------------------------------------
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        Transportadora t = new Transportadora();
+       Transportadora t = new Transportadora();
         t.setNmFantasia(txNmFantasia.getText());
         t.setRazaoSocial(txRazaoSocial.getText());
         t.setCnpj(txCnpj.getText());
@@ -276,7 +276,6 @@ public class InserirTransportadoraGUI extends javax.swing.JFrame {
         }
 
         TransportadoraController tc = new TransportadoraController();
-
         if ((Validadores.validaCampoVazio(txCnpj.getText(), "CNPJ")
                 && Validadores.validaCampoVazio(txNmFantasia.getText(), "Nome Fantasia")
                 && Validadores.validaCampoVazio(txRazaoSocial.getText(), "Razão Social")
@@ -295,25 +294,27 @@ public class InserirTransportadoraGUI extends javax.swing.JFrame {
                             if (Validadores.validaData(txDtCadastro.getText(), "Data de Cadastro")) {
                                 if (!(txId.getText().equals("") || (txId.getText().equals(null)))) {
                                     t.setCod(Integer.parseInt(txId.getText()));
-                                    tc.update(t);
+                                    tc.salvar(t);
                                     modelo.removeRow(linhaSelecionada);
                                     modelo.addRow(new Object[]{t.getCod(),
                                         t.getNmFantasia(), t.getCnpj(),
                                         t.getTelefone()});
                                     this.dispose();
                                 } else {
-                                    int id = tc.inserir(t);
+                                    int id = tc.salvar(t).getCod();
                                     JOptionPane.showMessageDialog(null, "Transportadora cadastrada com sucesso");
                                     modelo.addRow(new Object[]{id, t.getNmFantasia(),
                                         t.getCnpj(), t.getTelefone()});
                                     this.dispose();
-                                }
+                                      }
                             }
                         }
                     }
                 }
             }
         }
+    
+
     }//GEN-LAST:event_btSalvarActionPerformed
 
     //--------------------------------------------------------------------------

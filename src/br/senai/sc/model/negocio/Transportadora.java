@@ -2,31 +2,31 @@ package br.senai.sc.model.negocio;
 
 //------------------------------------------------------------------------------
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 //------------------------------------------------------------------------------
-/**
- * Classe responsável por representar a transportadora, a qual se encarrega da
- * distribuição de mercadorias
- *
- * @author wesley_s
- * @version 1.0
- */
+//**
+// * Classe responsável por representar a transportadora, a qual se encarrega da
+// * distribuição de mercadorias
+// *
+//* @author wesley_s
+// * @version 1.0
+// *
 //------------------------------------------------------------------------------
+@Entity
 public class Transportadora extends PessoaJuridica {
 
-    //--------------------------------------------------------------------------
-    //Atributos
+    @Id
+    @GeneratedValue
     private String email;
     private String paginaWeb;
     private String contato;
 
-    //--------------------------------------------------------------------------
-    //Construtor Padrão
     public Transportadora() {
     }
 
-    //--------------------------------------------------------------------------
-    //Métodos getters e setters
     public String getEmail() {
         return email;
     }
@@ -51,8 +51,6 @@ public class Transportadora extends PessoaJuridica {
         this.contato = contato;
     }
 
-    //--------------------------------------------------------------------------
-    //Equals
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -74,8 +72,6 @@ public class Transportadora extends PessoaJuridica {
         return true;
     }
 
-    //--------------------------------------------------------------------------
-    //Método toString
     @Override
     public String toString() {
         return "------ TRANSPORTADORA ------"
