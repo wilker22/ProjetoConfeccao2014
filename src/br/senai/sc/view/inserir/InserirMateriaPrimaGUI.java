@@ -14,7 +14,6 @@ import br.senai.sc.validador.Validadores;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,7 +35,7 @@ public class InserirMateriaPrimaGUI extends javax.swing.JFrame {
         this.modelo = modelo;
         this.linhaSelecionada = linhaSelecionada;
         MateriaPrimaController mpc = new MateriaPrimaController();
-        MateriaPrima mp = mpc.listById(CodMateriaPrima);
+        MateriaPrima mp = mpc.listarMateriaPrimaById(CodMateriaPrima);
         txId.setText(String.valueOf(mp.getCodigo()));
         txNome.setText(mp.getNome());
         txPreco.setText(String.valueOf(mp.getPreco()));
@@ -265,17 +264,17 @@ public class InserirMateriaPrimaGUI extends javax.swing.JFrame {
             MateriaPrimaController mpc = new MateriaPrimaController();
             if (txId.getText().equals("")) {
 
-                int CodMateriaPrima = mpc.inserir(mp);
+                // int CodMateriaPrima = mpc.salvar(mp);
 
                 modelo.addRow(new Object[]{mp.getNome(), mp.getCategoria(), mp.getFornecedor(), mp.getPreco(), mp.getTpUnidade(), mp.getQuantidade()});
                 dispose();
             } else {
                 mp.setCodigo(Integer.parseInt(txId.getText()));
-                int estado = mpc.update(mp);
-                if (estado > 0) {
-                    modelo.removeRow(linhaSelecionada);
-                    modelo.addRow(new Object[]{mp.getCodigo(), mp.getNome(), mp.getCategoria(), mp.getFornecedor(), mp.getPreco(), mp.getTpUnidade(), mp.getQuantidade()});
-                }
+                //   int estado = mpc.salvar(mp);
+                //   if (estado > 0) {
+                modelo.removeRow(linhaSelecionada);
+                modelo.addRow(new Object[]{mp.getCodigo(), mp.getNome(), mp.getCategoria(), mp.getFornecedor(), mp.getPreco(), mp.getTpUnidade(), mp.getQuantidade()});
+                //  }
             }
         }
 

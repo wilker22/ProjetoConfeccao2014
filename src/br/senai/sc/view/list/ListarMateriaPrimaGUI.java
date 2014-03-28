@@ -146,7 +146,7 @@ public class ListarMateriaPrimaGUI extends javax.swing.JFrame {
         String texto = txPesquisa.getText();
         modelo.setNumRows(0);
         MateriaPrimaController mpc = new MateriaPrimaController();
-        for (MateriaPrima mp : mpc.pesquisar(txPesquisa.getText())) {
+        for (MateriaPrima mp : mpc.pesquisarNome(txPesquisa.getText())) {
             modelo.addRow(new Object[]{mp.getCodigo(), mp.getFornecedor(), mp.getNome(), mp.getCategoria(), mp.getPreco(), mp.getTpUnidade(), mp.getQuantidade()});
         }
 
@@ -159,7 +159,7 @@ public class ListarMateriaPrimaGUI extends javax.swing.JFrame {
             try {
                 int CodMateriaPrima = (int) tabela.getValueAt(linhaSelecionada, 0);
                 MateriaPrimaController mpc = new MateriaPrimaController();
-                if (mpc.delete(CodMateriaPrima)) {
+                if (mpc.excluir(CodMateriaPrima)) {
                     modelo.removeRow(linhaSelecionada);
                 }
             } catch (Exception e) {
@@ -265,7 +265,7 @@ public class ListarMateriaPrimaGUI extends javax.swing.JFrame {
 
     private void preencherJTable() {
         MateriaPrimaController mpc = new MateriaPrimaController();
-        for (MateriaPrima mp : mpc.listAll()) {
+        for (MateriaPrima mp : mpc.ListarMateriaPrima()) {
             modelo.addRow(new Object[]{mp.getCodigo(), mp.getFornecedor(), mp.getNome(), mp.getCategoria(), mp.getPreco(), mp.getTpUnidade(), mp.getQuantidade()});
 
         }
