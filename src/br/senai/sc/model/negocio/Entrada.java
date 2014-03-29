@@ -1,40 +1,33 @@
 package br.senai.sc.model.negocio;
 
-
-
-
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-
-
-/**
- * @version 1.0
- * @author nathan_bettiol
- */
-
-// Classe Entrada onde seram recebidas as informações de entrada de Produtos no Sistima
-
+@Entity
 public class Entrada {
-   
-    //Declaração das Variaveis
+
+    @Id
+    @GeneratedValue
     private int codigo;
-    private  double preco;
+    private double preco;
+    @ManyToOne
     private Produto produto;
+    @Temporal(TemporalType.DATE)
     private Date dtEmissao;
     private int qtProduto;
-    private NotaFiscal notaFiscal;
+    private String notaFiscal;
+    @ManyToOne
     private Funcionario funcionario;
 
-
-
-    //Construtor sem parametros
-    
     public Entrada() {
     }
-   
-    //Final Construtor sem parametro--------------------------------------------
-    //Getters and Setters dos atributos da classe entrada
+
     public int getCodigo() {
         return codigo;
     }
@@ -49,14 +42,6 @@ public class Entrada {
 
     public void setPreco(double preco) {
         this.preco = preco;
-    }
-
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
     }
 
     public Date getDtEmissao() {
@@ -75,14 +60,6 @@ public class Entrada {
         this.qtProduto = qtProduto;
     }
 
-    public NotaFiscal getNotaFiscal() {
-        return notaFiscal;
-    }
-
-    public void setNotaFiscal(NotaFiscal notaFiscal) {
-        this.notaFiscal = notaFiscal;
-    }
-
     public Funcionario getFuncionario() {
         return funcionario;
     }
@@ -97,14 +74,8 @@ public class Entrada {
     public String toString() {
         return "Entrada{" + "codigo=" + codigo + ", preco=" + preco + ", produto=" + produto + ", dtEmissao=" + dtEmissao + ", qtProduto=" + qtProduto + ", notaFiscal=" + notaFiscal + ", funcionario=" + funcionario + '}';
     }
-   
 
-   
-
-    
-   
-   //Final Equals-------------------------------------------- 
-
+    //Final Equals-------------------------------------------- 
     //Final toString--------------------------------------------
     // Equals que vai ser usado mais a frente
     @Override
@@ -143,6 +114,19 @@ public class Entrada {
         return true;
     }
 
-   
-    
-} 
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public String getNotaFiscal() {
+        return notaFiscal;
+    }
+
+    public void setNotaFiscal(String notaFiscal) {
+        this.notaFiscal = notaFiscal;
+    }
+}
