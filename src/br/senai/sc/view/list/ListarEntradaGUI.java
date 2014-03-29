@@ -202,8 +202,8 @@ public class ListarEntradaGUI extends javax.swing.JFrame {
         String nome = txBuscar.getText();
         modelo.setNumRows(0);
         EntradaController ccc = new EntradaController();
-        for (Entrada cc : ccc.listarNome(nome)) {
-            modelo.addRow(new Object[]{cc.getCodigo(), cc.getDtEmissao(), cc.getProduto().getCodProduto(), cc.getFuncionario().getCod(), cc.getNotaFiscal().getCodNumero(), cc.getPreco(), cc.getQtProduto()});
+        for (Entrada cc : ccc.listarTodos()) {
+            modelo.addRow(new Object[]{cc.getCodigo(), cc.getDtEmissao(), cc.getProduto().getCodProduto(), cc.getFuncionario().getCod(), cc.getNotaFiscal(), cc.getPreco(), cc.getQtProduto()});
     }//GEN-LAST:event_txBuscarActionPerformed
     }
    
@@ -237,7 +237,7 @@ public class ListarEntradaGUI extends javax.swing.JFrame {
     private void preencherJTable() {
         EntradaController ec = new EntradaController();
         for (Entrada e : ec.listarTodos()) {
-            modelo.addRow(new Object[]{e.getCodigo(), e.getDtEmissao(), e.getProduto().getCodProduto(), e.getFuncionario().getCod(), e.getNotaFiscal().getCodNumero(), e.getPreco(), e.getQtProduto()});
+            modelo.addRow(new Object[]{e.getCodigo(), e.getDtEmissao(), e.getProduto().getCodProduto(), e.getFuncionario().getCod(), e.getNotaFiscal(), e.getPreco(), e.getQtProduto()});
         }
     }
 }
