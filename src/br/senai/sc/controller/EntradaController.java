@@ -1,48 +1,40 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.senai.sc.controller;
 
 import br.senai.sc.model.negocio.Entrada;
-import br.senai.sc.model.persistencia.EntradaDaoJDBC;
+import br.senai.sc.model.persistencia.EntradaDaoJPA;
 import br.senai.sc.model.persistencia.dao.EntradaDAO;
-
 import java.util.List;
 
 /**
  *
- * @author nathan_bettiol
+ * @author patricia_gageiro
  */
 public class EntradaController {
-    
-    
-    public boolean insert(Entrada e) {
-        EntradaDAO dao = new EntradaDaoJDBC();
-        return dao.insert(e);
+
+    public Entrada insert(Entrada entrada) {
+        EntradaDAO dao = new EntradaDaoJPA();
+        return dao.save(entrada);
+    }
+
+    public boolean remove(int codigo) {
+        EntradaDAO dao = new EntradaDaoJPA();
+        return dao.remove(Entrada.class, codigo);
+
     }
 
     public List<Entrada> listarTodos() {
-        EntradaDAO dao = new EntradaDaoJDBC();
-        return dao.listAll();
+        EntradaDAO dao = new EntradaDaoJPA();
+        return dao.getAll(Entrada.class);
     }
 
-      public boolean remove (int id){
-        EntradaDAO dao = new EntradaDaoJDBC();
-        return dao.delete(id);
+    public Entrada listarEntradaById(int codigo) {
+        EntradaDAO dao = new EntradaDaoJPA();
+        return dao.getById(Entrada.class, codigo);
+
     }
-    
-    public boolean update(Entrada e){
-        EntradaDAO dao = new EntradaDaoJDBC();
-        return dao.update(e);
-    }
-    
-    public List<Entrada> listById(int id){
-        EntradaDAO dao = new EntradaDaoJDBC();
-        return dao.listById(id);
-    }
-      public List<Entrada> listarNome(String nome) {
-        EntradaDAO dao = new EntradaDaoJDBC();
-        return dao.listName(nome);
+
+    public List<Entrada> pesquisarNome(String nome) {
+        EntradaDAO dao = new EntradaDaoJPA();
+        return dao.pesquisaNome(nome);
     }
 }
