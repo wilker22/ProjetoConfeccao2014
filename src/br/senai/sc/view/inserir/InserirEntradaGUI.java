@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package br.senai.sc.view.inserir;
 
@@ -14,22 +9,11 @@ import br.senai.sc.model.negocio.Entrada;
 import br.senai.sc.model.negocio.Funcionario;
 import br.senai.sc.model.negocio.NotaFiscal;
 import br.senai.sc.model.negocio.Produto;
-import br.senai.sc.model.persistencia.ConnectionFactory;
-import br.senai.sc.model.persistencia.FuncionariodaoJDBC;
-import br.senai.sc.model.persistencia.NotaFiscalDaoJDBC;
-import br.senai.sc.model.persistencia.ProdutoDaoJDBC;
-import br.senai.sc.model.persistencia.dao.FuncionarioDAO;
-import br.senai.sc.model.persistencia.dao.NotaFiscalDAO;
+import br.senai.sc.model.persistencia.ProdutoDaoJPA;
 import br.senai.sc.model.persistencia.dao.ProdutoDAO;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static javax.accessibility.AccessibleRole.LIST;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -235,23 +219,25 @@ public class InserirEntradaGUI extends javax.swing.JFrame {
        JOptionPane.showMessageDialog(null,"Passou do funcionario");
        
        Produto p = new Produto();
-      ProdutoDAO pro = new ProdutoDaoJDBC();
-      p = pro.listById(Integer.parseInt(cbCodProduto.getSelectedItem().toString()));
+      ProdutoDAO pro = new ProdutoDaoJPA();
+      //p = pro.getById(Integer.parseInt(cbCodProduto.getSelectedItem().toString()));
       e.setProduto(p);
       JOptionPane.showMessageDialog(null,"Passou do produto");
 
         e.setQtProduto(Integer.parseInt(txQuantidade.getText()));
          e.setPreco(Double.parseDouble(txPreco.getText()));
+         
          NotaFiscal n = new NotaFiscal();
       n.setCodNumero(Integer.parseInt(cbCodNotaFiscal.getSelectedItem().toString()));
-      e.setNotaFiscal(n);
+      e.setNotaFiscal(null);
        EntradaController ec = new EntradaController();
-      ec.insert(e);
-      if (ec.insert(e)){
-                 JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
-             }else{
-                        JOptionPane.showMessageDialog(null, "As tabelas dos outros alunos estão erradas!");
-                    }
+       Entrada entrada =  ec.insert(e);
+        
+        if (entrada != null) {
+            JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "As tabelas dos outros alunos estão erradas!");
+        }
      
     
      
@@ -303,7 +289,7 @@ public class InserirEntradaGUI extends javax.swing.JFrame {
         comboModel.removeAllElements();
         List<Funcionario> funcionarios = new ArrayList<>();
         FuncionarioController fc = new FuncionarioController();
-        funcionarios = fc.listAll();
+        funcionarios = fc.listarFuncionario();
 
         for (int linha = 0; linha < funcionarios.size(); linha++) {
             Funcionario fu = funcionarios.get(linha);
@@ -317,7 +303,7 @@ public class InserirEntradaGUI extends javax.swing.JFrame {
         comboModel.removeAllElements();
         List<Produto> produtos = new ArrayList<>();
         ProdutoController pc = new ProdutoController();
-        produtos = pc.listAll();
+        produtos = pc.listarProduto();
 
         for (int linha = 0; linha < produtos.size(); linha++) {
             Produto pr = produtos.get(linha);
