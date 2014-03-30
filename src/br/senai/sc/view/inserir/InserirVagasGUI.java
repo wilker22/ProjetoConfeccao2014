@@ -240,7 +240,7 @@ public class InserirVagasGUI extends javax.swing.JFrame {
         if (!(txCodigoVaga.getText().equals("") |  (txCodigoVaga.getText().equals(null)))){
             
             vag.setCodigo(Integer.parseInt(txCodigoVaga.getText()));
-            vc.update(vag);
+            vc.inserir(vag);
             
             modelo.removeRow(linhaSelecionada);
             modelo.addRow(new Object [] {vag.getCodigo(), vag.getNome(), vag.getQtVaga(),
