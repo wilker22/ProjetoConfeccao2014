@@ -43,7 +43,7 @@ public class ListarCurriculoGUI extends javax.swing.JFrame {
         });
 
         btRemover.setBackground(new java.awt.Color(0, 51, 51));
-        btRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/deletar.jpg"))); // NOI18N
+        btRemover.setText("Deletar");
         btRemover.setBorderPainted(false);
         btRemover.setContentAreaFilled(false);
         btRemover.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +53,7 @@ public class ListarCurriculoGUI extends javax.swing.JFrame {
         });
 
         btEditar.setBackground(new java.awt.Color(0, 51, 51));
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/editar.jpg"))); // NOI18N
+        btEditar.setText("Editar");
         btEditar.setBorderPainted(false);
         btEditar.setContentAreaFilled(false);
         btEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +63,7 @@ public class ListarCurriculoGUI extends javax.swing.JFrame {
         });
 
         btInserir.setForeground(new java.awt.Color(0, 51, 51));
-        btInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/inserir.jpg"))); // NOI18N
+        btInserir.setText("Novo");
         btInserir.setBorderPainted(false);
         btInserir.setContentAreaFilled(false);
         btInserir.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +100,7 @@ public class ListarCurriculoGUI extends javax.swing.JFrame {
                 .addGroup(PeinalFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(PeinalFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
